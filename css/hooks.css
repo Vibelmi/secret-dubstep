@@ -1,0 +1,17 @@
+html{
+}
+body{
+	margin: auto;
+	width:900px;
+	background:white;
+}
+section{
+	border:solid 1px #666;
+}
+aside{
+	width:31%;
+	margin:1%;
+	float:left;
+	border:solid 1px #666;
+}
+
