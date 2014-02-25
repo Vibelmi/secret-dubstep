@@ -3,7 +3,7 @@ include_once("modules/module/controller/module.php");
 class testmodule3 extends module{
 	
 	function __construct() {
-		$this->position = "contentBottom";
+		$this->position = "contentTop";
 		$this->display = true;
 	}
 
