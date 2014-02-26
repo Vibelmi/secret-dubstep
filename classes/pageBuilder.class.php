@@ -77,7 +77,7 @@ class pageBuilder{
 		echo '
 			<html>
 			<head>
-			<link rel="stylesheet" type="text/css" href="css/hooks.css">
+			<link rel="stylesheet" type="text/css" href="/css/hooks.css">
 			</head>
 			<body>
 			<header></header>

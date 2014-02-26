@@ -1,0 +1,10 @@
+<module>
+	<translation language="en">
+		<name>Name</name>
+		<age>Age</age>
+	</translation>
+	<translation language="es">
+		<name>Nombre</name>
+		<age>Edad</age>
+	</translation>
+</module>

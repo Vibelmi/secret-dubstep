@@ -9,10 +9,9 @@ class module{
 	protected $contentFilePath;
 	
 	function __construct($fPath = "modules/module/data/content.xml") {
-		$this->contentFilePath = $fPath;
+		$this->$contentFilePath = $fPath;
 		$this->position = "";
 		$this->display = false;
-		$this->content = $this->getContentByLang($GLOBALS['language']);
 	}
 
 	public function printContent(){
@@ -26,14 +25,19 @@ class module{
 	public function getPosition(){
 		return $this->position;
 	}
+	protected function getTranslatedContent(){
+		$dao = new contentDAO();
+		print_r($this->getContentByLang("es"));
+		//return $cont;
+	}
 	protected function getContent(){
-		$xml = new xmlRead($this->contentFilePath);
+		$xml = new xmlRead($contentFilePath);
 		return $xml->getXml();
 	}
 	protected function getContentByLang($lang){
-		$xml = new xmlRead($this->contentFilePath);
-		$cont = $xml->getXml();
-		foreach($cont->translation as $trans){
+		$xml = new xmlRead($contentFilePath);
+		$content = $xml->getXml();
+		foreach($content->module->translation as $trans){
 			if($trans["language"] == $lang){
 				return $trans;
 			}
