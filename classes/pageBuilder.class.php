@@ -12,10 +12,15 @@ class pageBuilder{
 	private $modules;
 	//Dinamic content by position (hooks)
 	private $displayAreas;
+	//Pages saved in the pages.xml configuration file
 	private $pages;
+	//Module's styles
+	private $styles;
 	function __construct(){
-
+	
 		$this->loadModules();
+		$this->loadModuleStyles();
+
 
 		$this->displayAreas = array("header" => "",
 						"footer" => "",
@@ -37,7 +42,7 @@ class pageBuilder{
 	}
 	
 	/*
-	* This method loads all active modules in the modules folder as objects.
+	* This method loads all modules in the modules folder as objects.
 	*/
 	function loadModules(){
 		$modulesDirectorys = scandir("modules");
@@ -48,7 +53,25 @@ class pageBuilder{
 			}
 		}
 	}
+	/*
+	* This method loads all the css files of the modules. This css files may be in the "css" file inside the module file.
+	*/
+	function loadModuleStyles(){
+		$this->styles = "";
+		$modulesDirectorys = scandir("modules");
+		foreach($modulesDirectorys as $moduleName){
+			if($moduleName != "." && $moduleName != ".." && $moduleName != "pages.xml" && $moduleName != "module"){
+				$styleFiles = scandir("modules/".$moduleName."/css");
+				foreach($styleFiles as $styleFile){
+					if(strpos($styleFile ,'.css') !== false){
+						$this->styles .= '<link rel="stylesheet" type="text/css" href="modules/'.$moduleName.'/css/'.$styleFile.'">';
+					}
+				}
 
+				
+			}
+		}
+	}
 	/*
 	* This method load the contents of the modules into the displayAreas array.
 	*/
@@ -77,7 +100,8 @@ class pageBuilder{
 		echo '
 			<html>
 			<head>
-			<link rel="stylesheet" type="text/css" href="/css/hooks.css">
+			<link rel="stylesheet" type="text/css" href="css/hooks.css">
+			'.$this->styles.'
 			</head>
 			<body>
 			<header></header>
