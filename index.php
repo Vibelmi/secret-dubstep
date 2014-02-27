@@ -1,8 +1,5 @@
 <?php
-  $language = "en"; //Default language
-  if(isset($_GET["lang"])){ //Get langunage
-	$language = $_GET["lang"];
-  }
+
   //Use this file for all the includes!!
   include_once("utils/includes.php");
   //Create the object that creates the page
