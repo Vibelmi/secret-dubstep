@@ -13,5 +13,4 @@ class mailer{
 	function sendMultiMail(){
 	
 	}
-	function send
 }
