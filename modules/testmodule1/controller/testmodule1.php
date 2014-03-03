@@ -1,5 +1,5 @@
 <?php
-include("modules/module/controller/module.php");
+include_("modules/module/controller/module.php");
 class testmodule1 extends module{
 	
 	function __construct($fPath = "modules/testmodule1/data/content.xml") {
@@ -11,6 +11,7 @@ class testmodule1 extends module{
 
 	public function printContent(){
 		ob_start();
+		$cont = $this->content;
 		include("modules/testmodule1/view/main.php");
 		$returned = ob_get_contents();
 		ob_end_clean();

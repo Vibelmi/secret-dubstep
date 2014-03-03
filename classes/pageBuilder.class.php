@@ -89,6 +89,7 @@ class pageBuilder{
 	* This method print the page. Use Smarty to give the displayAreas array of content to the tpl.
 	*/
 	function printPage($requestedPage){
+		include("views/header.php");
 		$this->createPage($requestedPage);
 		
 		/*
@@ -98,22 +99,21 @@ class pageBuilder{
 		$smarty->display('views/index.tpl');
 		*/
 		echo '
-			<html>
-			<head>
 			<link rel="stylesheet" type="text/css" href="css/hooks.css">
 			'.$this->styles.'
 			</head>
 			<body>
-			<header></header>
+			<header>'.$this->displayAreas["header"].'</header>
 			<section class="contentTop">'.$this->displayAreas["contentTop"].'</section>
 			<section class="contentCenter">'.$this->displayAreas["contentCenter"].'</section>
 			<section class="contentBottom">'.$this->displayAreas["contentBottom"].'</section>
 			<aside class="bottomLeft">'.$this->displayAreas["bottomLeft"].'</aside>
 			<aside class="bottomCenter">'.$this->displayAreas["bottomCenter"].'</aside>
 			<aside class="bottomRight">'.$this->displayAreas["bottomRight"].'</aside>
-			</body>
-			</html>
+
 		';
+		
+		include("views/footer.php");
 	}
 
 	/*

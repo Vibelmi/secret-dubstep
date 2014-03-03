@@ -6,5 +6,9 @@
   $pageBuilder = new pageBuilder();
   //Print the requested page, pages are defined in the file pages.xml. 
   //If the page is not found, load the first page in pages.xml (usually the main).
-  $pageBuilder->printPage("main");
+  $page = "";
+  if(isset($GLOBALS['CLEANED_GET']["page"])){ //Get langunage
+	$page = $GLOBALS['CLEANED_GET']["page"];
+  }
+  $pageBuilder->printPage($page);
 ?>
