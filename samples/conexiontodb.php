@@ -22,7 +22,7 @@ if (isset($_POST['username'], $_POST['email'], $_POST['password'])) {
     //CREAMOS LA SENTENCIA SQL
     $sql = "SELECT id FROM users WHERE email = '$email' LIMIT 1";
     //EJECUTAMOS EL SQL Y LO GUARDAMOS EN LA VARIABLE $stmt
-    $stmt = $bd->ejecutar($sql);
+    $stmt = $bd->run($sql);
     
     //COMPROBAMOS QUE NO ESTE DUPLICADO EL EMAIL
     }if ($stmt->num_rows == 1) {
@@ -32,7 +32,7 @@ if (isset($_POST['username'], $_POST['email'], $_POST['password'])) {
             //CREAMOS EL SQL PARA INSERTAR EL USUARIO
             $insert_stmt = "INSERT INTO users (username, email, password, type) VALUES ('$username', '$email', '$password', 0)";
             //EJECUTAMOS EL INSERT
-            $bd->ejecutar($insert_stmt);
+            $bd->run($insert_stmt);
             echo "registrado";
         }
         

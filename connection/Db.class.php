@@ -17,7 +17,7 @@ class Db {
 
     private function __construct() {
         $this->setConnection();
-        $this->conectar();
+        $this->connect();
     }
 
     /* Method for setting the parameters of the connection */
