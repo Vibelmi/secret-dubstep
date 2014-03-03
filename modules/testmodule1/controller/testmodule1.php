@@ -1,5 +1,5 @@
 <?php
-include_("modules/module/controller/module.php");
+include_once("modules/module/controller/module.php");
 class testmodule1 extends module{
 	
 	function __construct($fPath = "modules/testmodule1/data/content.xml") {
