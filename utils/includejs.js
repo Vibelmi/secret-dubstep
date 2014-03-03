@@ -4,4 +4,4 @@ function include(js){
     script.src=js;
     document.head.appendChild(script);
 }
-include("libs/jquery-2.1.0.min.js");
+include("js/jquery-2.1.0.min.js");
