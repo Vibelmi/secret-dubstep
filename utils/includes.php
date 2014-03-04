@@ -2,8 +2,11 @@
 /*
 * Put your inputs here to make it visibles in all the application.
 */
-include("utils/cleanInput.php");
-include("utils/languages.php");
+include_once("utils/cleanInput.php");
+include_once("utils/languages.php");
+require_once("connection/Db.class.php");
+require_once("connection/Conf.class.php");
+include_once("libs/SqlQueryBuilder.class.php");
 
 include_once("classes/xmlReader.class.php");
 include_once("classes/pageBuilder.class.php");
