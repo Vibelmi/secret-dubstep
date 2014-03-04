@@ -91,27 +91,15 @@ class pageBuilder{
 	function printPage($requestedPage){
 		include("views/header.php");
 		$this->createPage($requestedPage);
-		
-		/*
-		$smarty = new Smarty;
+
+                $smarty = new Smarty();
+
+                $smarty->setTemplateDir('views/templates');
+                $smarty->setCompileDir('views/templates_c');
 
 		$smarty->assign('Content', $this->displayAreas);
-		$smarty->display('views/index.tpl');
-		*/
-		echo '
-			<link rel="stylesheet" type="text/css" href="css/hooks.css">
-			'.$this->styles.'
-			</head>
-			<body>
-			<header>'.$this->displayAreas["header"].'</header>
-			<section class="contentTop">'.$this->displayAreas["contentTop"].'</section>
-			<section class="contentCenter">'.$this->displayAreas["contentCenter"].'</section>
-			<section class="contentBottom">'.$this->displayAreas["contentBottom"].'</section>
-			<aside class="bottomLeft">'.$this->displayAreas["bottomLeft"].'</aside>
-			<aside class="bottomCenter">'.$this->displayAreas["bottomCenter"].'</aside>
-			<aside class="bottomRight">'.$this->displayAreas["bottomRight"].'</aside>
-
-		';
+		$smarty->assign('Styles', $this->styles);				
+		$smarty->display('index.tpl');
 		
 		include("views/footer.php");
 	}
@@ -142,7 +130,6 @@ class pageBuilder{
 // IS VERY IMPORTANT!!
 spl_autoload_register('\pageBuilder::autoLoadModule');
 ?>
-
 
 
 

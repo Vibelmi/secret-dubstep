@@ -7,6 +7,7 @@ include_once("utils/languages.php");
 require_once("connection/Db.class.php");
 require_once("connection/Conf.class.php");
 include_once("libs/SqlQueryBuilder.class.php");
+require('/usr/lib/php5/Smarty/Smarty.class.php');
 
 include_once("classes/xmlReader.class.php");
 include_once("classes/pageBuilder.class.php");
