@@ -92,26 +92,15 @@ class pageBuilder{
 		include("views/header.php");
 		$this->createPage($requestedPage);
 		
-		/*
-		$smarty = new Smarty;
-
-		$smarty->assign('Content', $this->displayAreas);
-		$smarty->display('views/index.tpl');
-		*/
-		echo '
-			<link rel="stylesheet" type="text/css" href="css/hooks.css">
-			'.$this->styles.'
-			</head>
-			<body>
-			<header>'.$this->displayAreas["header"].'</header>
-			<section class="contentTop">'.$this->displayAreas["contentTop"].'</section>
-			<section class="contentCenter">'.$this->displayAreas["contentCenter"].'</section>
-			<section class="contentBottom">'.$this->displayAreas["contentBottom"].'</section>
-			<aside class="bottomLeft">'.$this->displayAreas["bottomLeft"].'</aside>
-			<aside class="bottomCenter">'.$this->displayAreas["bottomCenter"].'</aside>
-			<aside class="bottomRight">'.$this->displayAreas["bottomRight"].'</aside>
-
-		';
+		include("views/header.php");
+		
+		$this->createPage($requestedPage);
+		
+		$GLOBALS['smarty']->assign('Content', $this->displayAreas);
+		$GLOBALS['smarty']->assign('Styles', $this->styles);				
+		$GLOBALS['smarty']->display('index.tpl');
+		
+		include("views/footer.php");
 		
 		include("views/footer.php");
 	}
