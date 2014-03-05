@@ -11,6 +11,6 @@ require('libs/Smarty/Smarty.class.php');
 
 include_once("classes/xmlReader.class.php");
 include_once("classes/pageBuilder.class.php");
-include_onece("classes/Product.class.php")
+include_once("classes/Product.class.php")
 //require('.:/usr/share/php/Smarty/Smarty.class.php');
 ?>
