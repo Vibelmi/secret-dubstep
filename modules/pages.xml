@@ -3,6 +3,7 @@
 		<module>testmodule1</module>
 		<module>testmodule2</module>
 		<module>testmodule3</module>
+                <module>login</module>
 	</page>
 	<page name="profile">
 		<module>testmodule2</module>
