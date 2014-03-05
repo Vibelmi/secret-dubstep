@@ -1,13 +1,14 @@
 <pages>
-	<page name="main">
-		<module>testmodule1</module>
-		<module>testmodule2</module>
-		<module>testmodule3</module>
-	</page>
-	<page name="profile">
-		<module>testmodule2</module>
-	</page>
-        <page name="utickets">
-            <module>user_tickets</module>
-        </page>
+    <page name="main">
+        <module>testmodule1</module>
+        <module>testmodule2</module>
+        <module>testmodule3</module>
+        <module>slider</module>		                
+    </page>
+    <page name="profile">
+        <module>testmodule2</module>
+    </page>
+    <page name="utickets">
+        <module>user_tickets</module>
+    </page>
 </pages>
