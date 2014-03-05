@@ -1,0 +1,14 @@
+<module>
+    <translation language="en">
+        <email>Put your email</email>
+        <subject>Subject</subject>
+        <description>Describe your problem</description>
+        <send>Send</send>
+    </translation>
+    <translation language="es">
+        <email>Introduce tu email</email>
+        <subject>Asunto</subject>
+        <description>Describe tu problema</description>
+        <send>Enviar</send>
+    </translation>
+</module>
