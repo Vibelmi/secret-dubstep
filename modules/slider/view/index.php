@@ -33,7 +33,7 @@
         //
         ///////////////////////////////////////////////////////////////////////////////////////////////////--> 
 
-        <script type='text/javascript' src='modules/slider/scripts/jquery.min.js'></script>
+        <!--<script type='text/javascript' src='modules/slider/scripts/jquery.min.js'></script>-->
         <script type='text/javascript' src='modules/slider/scripts/jquery.mobile.customized.min.js'></script>
         <script type='text/javascript' src='modules/slider/scripts/jquery.easing.1.3.js'></script> 
         <script type='text/javascript' src='modules/slider/scripts/camera.min.js'></script>  
