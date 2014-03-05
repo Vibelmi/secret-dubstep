@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<module>
+	<translation language="en">
+            <login>Log In</login>
+            <user>E-Mail</user>
+            <pass>Password</pass>
+            <rememberpass>Remember password?</rememberpass>
+            <register>Register</register>
+            <signin>Sign In with...</signin>
+            <signinfacebook>Sign In with Facebook</signinfacebook>
+            <signingoogle>Sign In with Google</signingoogle>
+            <signintwitter>Sign In with Twitter</signintwitter>
+            <provider>Sign In as Provider</provider>
+	</translation>
+	<translation language="es">
+            <login>Iniciar Sesión</login>
+            <user>Correo</user>
+            <pass>Contraseña</pass>
+            <rememberpass>Recordar la contraseña?</rememberpass>
+            <register>Registrate</register>
+            <signin>Ingresa con...</signin>
+            <signinfacebook>Ingresa con Facebook</signinfacebook>
+            <signingoogle>Ingresa con Google</signingoogle>
+            <signintwitter>Ingresa con Twitter</signintwitter>
+            <provider>Ingresa como Proveedor</provider>
+	</translation>
+</module>
