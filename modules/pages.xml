@@ -4,7 +4,8 @@
         <module>testmodule2</module>
         <module>testmodule3</module>
         <module>slider</module>		
-        <module>twitter</module>		                                
+        <module>twitter</module>
+        <module>login</module>		                                
     </page>
     <page name="profile">
         <module>testmodule2</module>
