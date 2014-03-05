@@ -1,0 +1,140 @@
+#btnlogin{
+    float: right;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: 3px solid #000000;
+    box-shadow:
+        0px -1px 3px rgba(000,000,000,0.5),
+        inset 0px 0px 1px rgba(255,255,255,0.6);
+}
+
+#btnlogin:hover{
+    color: #08C;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+input{
+    padding:7px 2px 7px 10px;
+    line-height:24px;
+    border-radius:5px;
+    font-size:16px;
+}
+
+#ximg {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    opacity: 0.3;
+}
+
+#ximg:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
+#sign_up{
+    background-color: #eef2f7;
+    border: 1px solid #536376;
+    padding: 14px 22px;
+    width: 30%;
+    display: none;
+    border-radius: 6px;
+    box-shadow: rgba(0,0,0,.6) 0px 2px 12px;
+}
+
+.logininput {
+    width: 100%;
+}
+
+.loginh2 {
+    text-align: center;
+}
+
+#register {
+    float: right;
+}
+
+#sign_in {
+    background: url(../images/divider.png) repeat-x top left;
+}
+
+.logina{
+    color:#08C;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.logina:hover {
+    text-decoration: underline;
+}
+
+.btnenter {
+    background-color: #E2E2E8;
+    width: 100%;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: 1px solid black;
+}
+
+.btnenter:hover{
+    background-color: #F0F0F3;
+    cursor: pointer;
+}
+
+.singin {
+    color: white;
+    border: 1px solid black;
+    border-radius: 6px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.singinp {
+    display: inline;
+}
+
+.singinimg {
+    padding-right: 15px;
+}
+
+#facebook {
+    background-color: #3b579d;
+}
+
+#google{
+    background-color: #de4b39;
+}
+
+#twitter {
+    background-color: #00acee;
+}
+
+
+.checkbox {
+    position: absolute; 
+    overflow: hidden; 
+    clip: rect(0px, 0px, 0px, 0px); 
+}
+
+.checkbox + .labelcheck {
+    padding-left:20px;
+    height:15px; 
+    display:inline-block;
+    line-height:15px;
+    background-repeat:no-repeat;
+    background-position: 0 0;
+    font-size:15px;
+    vertical-align:middle;
+    cursor:pointer;
+}
+
+.checkbox:checked + .labelcheck {
+    background-position: 0 -15px;
+}
+
+.labelcheck{ 
+    background-image:url(../images/checkbox.png);
+}
