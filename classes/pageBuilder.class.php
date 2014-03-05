@@ -99,11 +99,12 @@ class pageBuilder{
 		$smarty->display('views/index.tpl');
 		*/
 		echo '
+                        <meta charset="UTF-8">
 			<link rel="stylesheet" type="text/css" href="css/hooks.css">
 			'.$this->styles.'
 			</head>
 			<body>
-			<header>'.$this->displayAreas["header"].'</header>
+			<header class="header">'.$this->displayAreas["header"].'</header>
 			<section class="contentTop">'.$this->displayAreas["contentTop"].'</section>
 			<section class="contentCenter">'.$this->displayAreas["contentCenter"].'</section>
 			<section class="contentBottom">'.$this->displayAreas["contentBottom"].'</section>
