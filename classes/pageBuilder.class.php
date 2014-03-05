@@ -61,12 +61,14 @@ class pageBuilder{
 		$modulesDirectorys = scandir("modules");
 		foreach($modulesDirectorys as $moduleName){
 			if($moduleName != "." && $moduleName != ".." && $moduleName != "pages.xml" && $moduleName != "module"){
-				$styleFiles = scandir("modules/".$moduleName."/css");
-				foreach($styleFiles as $styleFile){
-					if(strpos($styleFile ,'.css') !== false){
-						$this->styles .= '<link rel="stylesheet" type="text/css" href="modules/'.$moduleName.'/css/'.$styleFile.'">';
-					}
-				}
+				if(file_exists("modules/".$moduleName."/css")){
+                                    $styleFiles = scandir("modules/".$moduleName."/css");
+                                    foreach($styleFiles as $styleFile){
+                                            if(strpos($styleFile ,'.css') !== false){
+                                                    $this->styles .= '<link rel="stylesheet" type="text/css" href="modules/'.$moduleName.'/css/'.$styleFile.'">';
+                                            }
+                                    }
+                                }
 
 				
 			}
@@ -90,17 +92,12 @@ class pageBuilder{
 	*/
 	function printPage($requestedPage){
 		include("views/header.php");
-		$this->createPage($requestedPage);
-		
-		include("views/header.php");
 		
 		$this->createPage($requestedPage);
 		
 		$GLOBALS['smarty']->assign('Content', $this->displayAreas);
 		$GLOBALS['smarty']->assign('Styles', $this->styles);				
 		$GLOBALS['smarty']->display('index.tpl');
-		
-		include("views/footer.php");
 		
 		include("views/footer.php");
 	}
