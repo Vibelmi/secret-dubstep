@@ -74,6 +74,11 @@ class pageBuilder{
 			}
 		}
 	}
+        function printModule($moduleName){
+            if(array_key_exists($moduleName, $this->modules)){
+                echo $this->modules[$moduleName]->printContent();
+            }
+        }
 	/*
 	* This method load the contents of the modules into the displayAreas array.
 	*/

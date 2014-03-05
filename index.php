@@ -16,10 +16,15 @@
   
   //Print the requested page, pages are defined in the file pages.xml. 
   //If the page is not found, load the first page in pages.xml (usually the main).
-  $page = "";
-  if(isset($GLOBALS['CLEANED_GET']["page"])){ //Get langunage
-	$page = $GLOBALS['CLEANED_GET']["page"];
-  }
+
+  if(isset($GLOBALS['CLEANED_POST']["ajax"])){
+      $pageBuilder->printModule($GLOBALS['CLEANED_POST']["ajax"]);
+  }else{
+    $page = "";
+    if (isset($GLOBALS['CLEANED_GET']["page"])) { //Get langunage
+        $page = $GLOBALS['CLEANED_GET']["page"];
+    }
+    $pageBuilder->printPage($page);
+}
   
-  $pageBuilder->printPage($page);
 ?>
