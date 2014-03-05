@@ -1,0 +1,83 @@
+/*Font type imported from google fonts*/
+@import url(http://fonts.googleapis.com/css?family=News+Cycle);
+
+#twitter_mod{
+}
+
+#twitter_mod #twitter_logo{
+	text-align: center;
+}
+#twitter_mod #twitter_logo img{
+	float:left;
+	height: 48px;
+}
+#twitter_mod #twitter_logo span{
+	font-size: 2em;
+	font-weight: bold;
+	width: 70%;
+	float: left;
+}
+#twitter_mod #twitter_logo p{
+	clear: both;
+}
+.tweet{
+    clear:both;
+    overflow:auto;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-top: 1px solid #e0e0e0;
+	 font-family: 'News Cycle', sans-serif;
+}
+.tweet:nth-child(odd){
+    background-color:#ffffff;
+
+}
+.tweet:nth-child(even){
+    background-color:#e8f3fc;    
+}
+.tweet div:nth-child(1){
+	width: 17%;	
+	float: left;
+	padding-left: 1%;
+	padding-right: 1%;	
+}
+.tweet div:nth-child(1) img{
+	/*Firefox*/
+	-moz-border-radius: 5px;
+	/*Safari & Chrome*/
+	-webkit-border-radius: 5px;
+	/*Opera & generic mode*/
+	border-radius: 5px;
+}
+.tweet div:nth-child(2){
+	vertical-align: top;
+	float: left;
+	width: 80%;
+	padding-right: 1%;
+}
+.tweet .author, .tweet .user, .tweet .followers{
+	font-size: 80%;
+	color: #008cff;
+}
+.tweet .author{
+	font-weight: bold;			
+}
+.tweet .followers{
+	float: right;
+}
+.tweet .msg{
+    font-size: 0.8em;
+}
+#more_tweets{
+	font-size: 0.7em;
+	float: right;
+	margin-right: 5%;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	/*Firefox*/
+	-moz-border-radius: 5px;
+	/*Safari & Chrome*/
+	-webkit-border-radius: 5px;
+	/*Opera & generic mode*/
+	border-radius: 5px;	
+}
