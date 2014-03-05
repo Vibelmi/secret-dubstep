@@ -15,7 +15,7 @@ li{
 	padding:5px;
 }
 
-input[type="text"],input[type="password"],input[type="mail"]{
+input[type="text"],input[type="password"],input[type="email"],textarea{
 	padding:7px 2px 7px 10px;
 	line-height:24px;
 	border-radius:5px;
@@ -34,14 +34,10 @@ header{
 	width:100%;
 	border-bottom:solid 2px #888;
 }
-div, header, aside, section{
-	background:white;
-	border-radius:4px;
-	margin:10px 0px;
-}
 #locationBar{
 	height:30px;	
 	background:#08C;
+        border-radius: 5px;
 }
 #locationBar span{
 	color:white;
