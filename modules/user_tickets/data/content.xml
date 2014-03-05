@@ -1,0 +1,12 @@
+<module>
+	<translation language="en">
+		<subject>Subject</subject>
+		<description>Describe your problem</description>
+                <send>Send</send>
+	</translation>
+	<translation language="es">
+		<subject>Asunto</subject>
+		<description>Describe tu problema</description>
+                <send>Enviar</send>
+	</translation>
+</module>

@@ -1,0 +1,72 @@
+*{
+	color:#333;
+	font-family: Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif;
+}
+a{
+	color:#08C;
+	font-weight:bold;
+	text-decoration:none;
+}
+ul{
+	list-style:none;
+	padding-left:15px;
+}
+li{
+	padding:5px;
+}
+
+input[type="text"],input[type="password"],input[type="mail"]{
+	padding:7px 2px 7px 10px;
+	line-height:24px;
+	border-radius:5px;
+	font-size:16px;
+}
+html{
+
+}
+body{
+	width:100%;
+	max-width:900px;
+	margin:auto;
+	background:#f1f1f1;
+}
+header{
+	width:100%;
+	border-bottom:solid 2px #888;
+}
+div, header, aside, section{
+	background:white;
+	border-radius:4px;
+	margin:10px 0px;
+}
+#locationBar{
+	height:30px;	
+	background:#08C;
+}
+#locationBar span{
+	color:white;
+	font-weight:bold;
+	padding:7px 10px;
+	display:inline-block;
+}
+#langSelect{
+	float:right;
+	display:block;
+}
+#logo{
+	width:20%;
+	position:top;
+	float:left;
+}
+#logo img{
+	width:100%;
+}
+#topCenter{
+	width:80%;
+	height:100px;
+	display:inline-block;
+}
+.clear{
+	clear:both;
+}
+
