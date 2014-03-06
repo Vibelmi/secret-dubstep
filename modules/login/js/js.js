@@ -63,12 +63,12 @@ function login() {
     if (error===2) {
         if ($('#checkboxprov').prop('checked')) {
             $.post("index.php", {token: 1, email: email, pass: pass, ajax: "login"}, function(result) {
-                alert(result);
+                alert("$"+result+"$");
             });
             //alert("enviar ajax com a provider");
         } else {
             $.post("index.php", {token: 0, email: email, pass: pass, ajax: "login"}, function(result) {
-                alert(result);
+                alert("$"+result+"$");
             });
             //alert("enviar ajax com a user");
         }
@@ -102,6 +102,8 @@ function paint(error){
         case 1: //pass empty || pass incorrect
             $('#pass_login').css("border-color", "red");
             $('#pass_login').css("border-width", "3px");
+            break;
+        case 3: //The user is banned
             break;
     }
 }
