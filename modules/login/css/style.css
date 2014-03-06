@@ -15,13 +15,6 @@
     text-decoration: underline;
 }
 
-input{
-    padding:7px 2px 7px 10px;
-    line-height:24px;
-    border-radius:5px;
-    font-size:16px;
-}
-
 #ximg {
     position: absolute;
     top: 2px;
@@ -60,12 +53,6 @@ input{
     background: url(../images/divider.png) repeat-x top left;
 }
 
-.logina{
-    color:#08C;
-    font-weight:bold;
-    text-decoration:none;
-}
-
 .logina:hover {
     text-decoration: underline;
 }
@@ -94,10 +81,13 @@ input{
 
 .singinp {
     display: inline;
+    color: white;
+    vertical-align: top;
 }
 
 .singinimg {
     padding-right: 15px;
+    //padding-top: 5px;
 }
 
 #facebook {
