@@ -83,12 +83,12 @@ function login() {
             $.post("index.php", {token: 1, email: email, pass: pass, ajax: "login"}, function(result) {
                 alert(result);
             });
-            alert("enviar ajax com a provider");
+            //alert("enviar ajax com a provider");
         } else {
             $.post("index.php", {token: 0, email: email, pass: pass, ajax: "login"}, function(result) {
                 alert(result);
             });
-            alert("enviar ajax com a user");
+            //alert("enviar ajax com a user");
         }
     }
 
