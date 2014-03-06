@@ -1,0 +1,104 @@
+################
+#create_tickets#
+################
+
+Session variables needed
+========================
+$_SESSION['token'] --> To know if a ticket is created by a user, provider or guest. user = 0, provider = 1, guest = other
+
+$_SESSION['idu'] --> If a user logs on. We need their idu.
+
+$_SESSION['idprov'] --> If a provider logs on. We need their idprov.
+
+$_SESSION['email'] --> Where We store the user's email or the provider's email.
+
+
+How it works
+=============
+When we execute the index.php with ?page=ctickets (stored in modules/pages.xml) the index.php go to the create_tickets module.
+
+The first controller to be loaded was the create_tickets.php
+
+    create_tickets.php
+    ------------------
+    The constructor has:
+        $fPath = "modules/create_tickets/data/content.xml" --> Where was located the file with the traductions. (Multilanguage).
+        $this->contentFilePath = $fPath; --> Store the content of the content.xml in this variable.
+	$this->position = "contentCenter"; --> Where we put our module (Hooks).
+	$this->display = true; --> If the module was displayed.
+	$this->content = $this->getContentByLang($GLOBALS['language']); --> The language what we want to load from the content.xml.
+     
+    Next, has the function printContent(), this function is the responsable to draw the module.
+        ob_start(); --> Start the buffer.
+        include("modules/create_tickets/controller/index.php"); --> Include the second controller to know what they need to load.
+        $returned = ob_get_contents(); --> Store the content of the buffer.
+	ob_end_clean(); --> Close and erase the buffer.
+	return $returned; --> Return the content of the buffer to the index.php to load the module.
+
+
+    index.php (in the controller folder)
+    ------------------------------------
+    This controller see if we recive any with post. If the post variable was empty. He load the main.php view.
+    If the post variable has content, he loads the whocreatetheticket.php
+
+
+    whocreatetheticket.php
+    ----------------------
+    This controller see the token variable stored in session to load one of the models.
+    If the token was 0, he loads the sendticketuser.php model.
+    If the token was 1, he loads the sendticketprov.php model.
+    If the token was different from 0 or 1, he loads the sendticketguest.php model.
+
+
+    sendticketuser.php
+    ------------------
+    First check the post content (subject and description).
+    Clean and sanitize this content.
+    This part needs the idu variable stored in session.
+    Next create the sql using the /libs/SqlQueryBuilder.class.php to insert the ticket in the database in the user_tickets table.
+    If success loads the view of success.php.
+    If fail loads the view fail.php.
+
+    
+    sendticketprov.php
+    ------------------
+    First check the post content (subject and description).
+    Clean and sanitize this content.
+    This part needs the idprov variable stored in session.
+    Next create the sql using the /libs/SqlQueryBuilder.class.php to insert the ticket in the database in the prov_tickets table.
+    If success loads the view of success.php.
+    If fail loads the view fail.php.
+
+
+    sendticketguest.php
+    ------------------
+    First check the post content (email, subject and description).
+    Clean and sanitize this content.
+    Next create the sql using the /libs/SqlQueryBuilder.class.php to insert the ticket in the database in the guest_tickets table.
+    If success loads the view of success.php.
+    If fail loads the view fail.php.
+
+
+    main.php
+    --------
+    The main view, he has a form with the fields email, subject and description.
+    If was started, the email field was completed automaticaly with the email stored in session.
+    The action calls to the index.php?page=ctickets
+    The send button calls to a sendticket.js to validate the fields, when was validate, execute the submit.
+
+
+    success.php
+    -----------
+    The view loaded when the ticket was created correctly.
+    
+
+    fail.php
+    --------
+    The view loaded when the ticket wasn't created.
+
+
+    sendticket.js
+    -------------
+    JQuery loaded when the document was ready.
+    When the customer clicks on send button. He check the fields in the form and put styles in the fields it was needed.
+    If all the fields was valid, execute the submit.

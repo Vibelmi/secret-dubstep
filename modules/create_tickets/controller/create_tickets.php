@@ -4,7 +4,7 @@ class create_tickets extends module{
 	
 	function __construct($fPath = "modules/create_tickets/data/content.xml") {
 		$this->contentFilePath = $fPath;
-		$this->position = "contentTop";
+		$this->position = "contentCenter";
 		$this->display = true;
 		$this->content = $this->getContentByLang($GLOBALS['language']);
 	}

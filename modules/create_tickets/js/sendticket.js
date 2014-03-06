@@ -1,10 +1,10 @@
 $(document).ready(function() {
     $("#send").click(function() {
-        $("#email").css("border-color", "none");
+        $("#temail").css("border-color", "none");
         $("#subject").css("border-color", "none");
         $("#description").css("border-color", "none");
         emailReg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/;
-        email = $("#email").val();
+        email = $("#temail").val();
         subject = $("#subject").val();
         description = $("#description").val();
         if (email.match(emailReg)) {
@@ -13,12 +13,15 @@ $(document).ready(function() {
                     $("#ticketform").submit();
                 } else {
                     $("#description").css("border-color", "red");
+                    $("#description").effect("shake");
                 }
             } else {
                 $("#subject").css("border-color", "red");
+                $("#subject").effect("shake");
             }
         } else {
-            $("#email").css("border-color", "red");
+            $("#temail").css("border-color", "red");
+            $("#temail").effect("shake");
         }
     });
 });

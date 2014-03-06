@@ -1,13 +1,13 @@
 
-<p>Pagina principal para el modulo de tickets</p>
+<h2><?php echo $cont->title; ?></h2>
 <div>
     <form id="ticketform" action="<?php echo $GLOBALS['URL']; ?>" method="post">
         <?php
         if ($_SESSION['email']) {
             $email = $_SESSION['email'];
-            echo "<input name='email' id='email' type='email' value='$email' disabled='disabled'>";
+            echo "<input name='temail' id='temail' type='email' value='$email' disabled='disabled'>";
         }else{
-            echo "<input name='email' id='email' type='email' placeholder='$cont->email'>";
+            echo "<input name='temail' id='temail' type='email' placeholder='$cont->email'>";
         }
         ?>
         
