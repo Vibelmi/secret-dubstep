@@ -10,6 +10,8 @@
   
   //The current url
   $URL = $_SERVER['REQUEST_URI'];
+  $home=explode("?",$URL); 
+  /*<?php echo $GLOBALS['home'][0]; ?>*/
   
   //Create the object that creates the page
   $pageBuilder = new pageBuilder();
