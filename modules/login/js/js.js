@@ -1,22 +1,22 @@
 window.onload = function() {
     $('#btnlogin').click(function(e) {
-        $('#sign_up').lightbox_me({
+        $('#login').lightbox_me({
             centered: true,
             onLoad: function() {
-                $('#sign_up').find('input:first').focus();
+                $('#login').find('input:first').focus();
             }
         });
         //e.preventDefault();
     });
 
     $('#ximg').click(function() {
-        $('#sign_up').trigger('close');
+        $('#login').trigger('close');
         closing();
     });
 
     $('#btnenter').click(login);
 
-    $('#pass').keyup(function(e) {
+    $('#pass_login').keyup(function(e) {
         if (e.keyCode === 13) {
             login();
         }
@@ -29,56 +29,38 @@ window.onload = function() {
 };
 
 function login() {
-    var email = $('#email').val();
-    var pass = $('#pass').val();
+    var email = $('#email_login').val();
+    var pass = $('#pass_login').val();
     clean();
     var emailReg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/;
     var passReg = /^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%? "]).*$/;
-    var correct = false;
-    var error = "";
+    var error = 0;
 
     if (email !== "") {
         if (emailReg.test(email)) {
-            correct = true;
-        } else {//email incorrect
-            correct = false;
             error = 2;
+        } else {//email incorrect
+            error = 0;
         }
     } else { //email empy
-        correct = false;
-        error = 1;
+        error = 0;
     }
 
-    if (correct) {
+    if (error===2) {
         if (pass !== "") {
             if (passReg.test(pass)) {
-                correct = true;
+                error===2;
             } else { //pass incorrect
-                correct = false;
-                error = 4;
+                error = 1;
             }
         } else { //pass empty
-            correct = false;
-            error = 3;
+            error = 1;
         }
     }
 
-    switch (error) {
-        case 1: //email empyborder-width
-        case 2: //email incorrect
-            $('#email').css("border-color", "red");
-            $('#pass').css("border-color", "red");
-            $('#email').css("border-width", "3px");
-            $('#pass').css("border-width", "3px");
-            break;
-        case 3: //pass empty
-        case 4: //pass incorrect
-            $('#pass').css("border-color", "red");
-            $('#pass').css("border-width", "3px");
-            break;
-    }
+    paint(error);
 
-    if (correct) {
+    if (error===2) {
         if ($('#checkboxprov').prop('checked')) {
             $.post("index.php", {token: 1, email: email, pass: pass, ajax: "login"}, function(result) {
                 alert(result);
@@ -95,16 +77,31 @@ function login() {
 }
 
 function clean() {
-    $('#email').css("border-color", "none");
-    $('#pass').css("border-color", "none");
-    $('#email').css("border-width", "1px");
-    $('#pass').css("border-width", "1px");
+    $('#email_login').css("border-color", "none");
+    $('#pass_login').css("border-color", "none");
+    $('#email_login').css("border-width", "1px");
+    $('#pass_login').css("border-width", "1px");
 }
 
 function closing() {
     $('#sign_in').slideDown("slow");
     $('.lb_overlay').remove();
-    $('#email').val("");
-    $('#pass').val("");
+    $('#email_login').val("");
+    $('#pass_login').val("");
     clean();
+}
+
+function paint(error){
+    switch (error) {
+        case 0: //email empty || email incorrect
+            $('#email_login').css("border-color", "red");
+            $('#pass_login').css("border-color", "red");
+            $('#email_login').css("border-width", "3px");
+            $('#pass_login').css("border-width", "3px");
+            break;
+        case 1: //pass empty || pass incorrect
+            $('#pass_login').css("border-color", "red");
+            $('#pass_login').css("border-width", "3px");
+            break;
+    }
 }
