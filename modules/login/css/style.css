@@ -27,7 +27,7 @@
     opacity: 1;
 }
 
-#sign_up{
+#login{
     background-color: #eef2f7;
     border: 1px solid #536376;
     padding: 14px 22px;
@@ -35,6 +35,12 @@
     display: none;
     border-radius: 6px;
     box-shadow: rgba(0,0,0,.6) 0px 2px 12px;
+    left: 50%;
+    margin-left:-223px;
+    z-index: 1002;
+    position: absolute;
+    top: 839px;
+    margin-top: 0px;
 }
 
 .logininput {
