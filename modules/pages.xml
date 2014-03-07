@@ -15,4 +15,8 @@
         <module>login</module>
         <module>create_tickets</module>
     </page>
+    <page name="admin_polls">
+        <!--<module>admin_polls</module>-->
+        <!--<module>create_poll</module>-->
+    </page>
 </pages>
