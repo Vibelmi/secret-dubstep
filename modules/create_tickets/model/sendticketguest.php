@@ -2,10 +2,7 @@
 
 $bd = Db::getInstance();
 
-session_start();
-
-
-if (isset($GLOBALS['CLEANED_POST']["subject"], $GLOBALS['CLEANED_POST']["description"], $GLOBALS['CLEANED_POST']["email"])) {
+if (isset($GLOBALS['CLEANED_POST']["subject"], $GLOBALS['CLEANED_POST']["description"], $GLOBALS['CLEANED_POST']["temail"])) {
     $subject = filter_input(INPUT_POST, 'subject', FILTER_SANITIZE_STRING);
     $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
@@ -25,8 +22,8 @@ if (isset($GLOBALS['CLEANED_POST']["subject"], $GLOBALS['CLEANED_POST']["descrip
     $query2->addValue("'$description'");
     
     $bd->run($query2->buildQuery());
-    echo "TICKET DE GUEST INTRODUCIDO CORRECTAMENTE";
+    include("modules/create_tickets/view/success.php"); 
 }else{
-    echo "ERROR AL INTRODUCIR EL TICKET";
+    include("modules/create_tickets/view/main.php"); 
 }
 ?>

@@ -4,11 +4,21 @@
         <subject>Subject</subject>
         <description>Describe your problem</description>
         <send>Send</send>
+        <title>Create a ticket</title>
+        <success>Ticket created successfully</success>
+        <fail>An error occurred while creating the ticket</fail>
+        <totickets>Back to ticket creation</totickets>
+        <toindex>Back to Homepage</toindex>
     </translation>
     <translation language="es">
         <email>Introduce tu email</email>
         <subject>Asunto</subject>
         <description>Describe tu problema</description>
         <send>Enviar</send>
+        <title>Crear un ticket</title>
+        <success>Ticket creado correctamente</success>
+        <fail>Ha ocurrido un error al crear el ticket</fail>
+        <totickets>Volver a la creación de tickets</totickets>
+        <toindex>Volver a la página principal</toindex>
     </translation>
 </module>

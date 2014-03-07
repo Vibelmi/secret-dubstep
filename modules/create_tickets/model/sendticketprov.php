@@ -2,10 +2,6 @@
 
 $bd = Db::getInstance();
 
-session_start();
-
-$_SESSION['idprov'] = 1;
-
 if (isset($GLOBALS['CLEANED_POST']["subject"], $GLOBALS['CLEANED_POST']["description"])) {
     $subject = filter_input(INPUT_POST, 'subject', FILTER_SANITIZE_STRING);
     $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
@@ -25,8 +21,8 @@ if (isset($GLOBALS['CLEANED_POST']["subject"], $GLOBALS['CLEANED_POST']["descrip
     $query2->addValue("'$description'");
 
     $bd->run($query2->buildQuery());
-    echo "TICKET DE PROVEEDOR INTRODUCIDO CORRECTAMENTE";
+    include("modules/create_tickets/view/success.php"); 
 }else{
-    echo "ERROR AL INTRODUCIR EL TICKET";
+    include("modules/create_tickets/view/main.php"); 
 }
 ?>
