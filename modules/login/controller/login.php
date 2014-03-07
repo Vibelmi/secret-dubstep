@@ -23,4 +23,7 @@ class login extends module {
 
 }
 
+//$_SESSION = array();
+//session_destroy();
+
 ?>
