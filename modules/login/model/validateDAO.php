@@ -89,6 +89,7 @@ class validateDAO {
     function isAdmin() {
         include("modules/login/model/adminLogin.inc.php");
         if ($this->email === $emailAdmin && $this->pass === $password) {
+            session_start();
             $_SESSION['token'] = 10;
             $_SESSION['email'] = $this->email;
             $this->error = 4;
@@ -145,6 +146,7 @@ class validateDAO {
     }
 
     function all_correct() {
+        session_start();
         $_SESSION['token'] = $this->bll->getType();
         $_SESSION['email'] = $this->email;
         $_SESSION['id'] = $this->idu;

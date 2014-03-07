@@ -40,7 +40,7 @@ class loginBll {
 
     function delete_attemps($idu_) { //Query to delete attemps
         $query = new SqlQueryBuilder("delete");
-        $query->setTable($this->table);
+        $query->setTable($this->table_login_attempts);
         $query->setWhere($this->id . " = " . "'" . $idu_ . "'");
 
         $this->bd->run($query->buildQuery());
