@@ -1,5 +1,8 @@
 window.onload = function() {
     $('#btnlogin').click(function(e) {
+        $('#email_login').val("");
+        $('#pass_login').val("");
+        clean();
         $('#login').lightbox_me({
             centered: true,
             onLoad: function() {
@@ -60,22 +63,22 @@ function login() {
 
     paint(error);
 
-    if (error === 2) {
-        if ($('#checkboxprov').prop('checked')) {
-            $.post("index.php", {token: 1, email: email, pass: pass, ajax: "login"}, function(result) {
-                if(result===2){result=5;}
-                paint(result);
-            });
-            //alert("enviar ajax com a provider");
-        } else {
-            $.post("index.php", {token: 0, email: email, pass: pass, ajax: "login"}, function(result) {
-                if(result===2){result=5;}
-                paint(result);
-            });
-            //alert("enviar ajax com a user");
+    if (error === 2) { //Enviar Ajax
+        var token;
+        if ($('#checkboxprov').prop('checked')) { //provider
+            token = 1;
+        } else { //user
+            token = 0;
         }
+        $.post("index.php", {token: token, email: email, pass: pass, ajax: "login"}, function(result) {
+            result = $.trim(result);
+            result = parseInt(result);
+            if (result === 2) {
+                result = 5;
+            }
+            paint(result);
+        });
     }
-
 }
 
 function clean() {
@@ -83,12 +86,13 @@ function clean() {
     $('#pass_login').css("border-color", "none");
     $('#email_login').css("border-width", "1px");
     $('#pass_login').css("border-width", "1px");
-    //$('#email_login').effect("shake");
 }
 
 function closing() {
     $('#sign_in').slideDown("slow");
-    $('.lb_overlay').remove();
+    $('.js_lb_overlay').remove();
+    $('#banned').remove();
+    $('#login').css("display", "none");
     $('#email_login').val("");
     $('#pass_login').val("");
     clean();
@@ -101,19 +105,23 @@ function paint(error) {
             $('#pass_login').css("border-color", "red");
             $('#email_login').css("border-width", "3px");
             $('#pass_login').css("border-width", "3px");
+            $('#email_login').effect('shake');
+            $('#pass_login').effect('shake');
             break;
         case 1: //pass empty || pass incorrect
             $('#pass_login').css("border-color", "red");
             $('#pass_login').css("border-width", "3px");
-            break;
-        case 5: //All correct
-            document.location.href=document.URL;
+            $('#pass_login').effect('shake');
             break;
         case 3: //The user is banned
-            alert("usuario baneado");
+            $('#login').prepend("<img id='banned' src='modules/login/images/banned.png'>");
+            $('#banned').lightbox_me();
             break;
         case 4: //The user is admin
-            document.location.href=document.URL;
+            document.location.href = document.URL;
+            break;
+        case 5: //All correct
+            document.location.href = document.URL;
             break;
     }
 }

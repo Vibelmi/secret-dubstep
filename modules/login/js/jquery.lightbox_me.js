@@ -102,6 +102,7 @@
             }
             $self.delegate(opts.closeSelector, "click", function(e) {
                 closeLightbox();
+                closing();
                 e.preventDefault();
             });
             $self.bind('close', closeLightbox);
