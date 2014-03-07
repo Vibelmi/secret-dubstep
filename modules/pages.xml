@@ -15,6 +15,10 @@
         <module>login</module>
         <module>create_tickets</module>
     </page>
+    <page name="registry">
+        <module>login</module>
+        <module>registry</module>
+    </page>
     <page name="admin_polls">
         <!--<module>admin_polls</module>-->
         <!--<module>create_poll</module>-->
