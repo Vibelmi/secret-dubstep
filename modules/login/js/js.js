@@ -46,10 +46,10 @@ function login() {
         error = 0;
     }
 
-    if (error===2) {
+    if (error === 2) {
         if (pass !== "") {
             if (passReg.test(pass)) {
-                error===2;
+                error === 2;
             } else { //pass incorrect
                 error = 1;
             }
@@ -60,15 +60,17 @@ function login() {
 
     paint(error);
 
-    if (error===2) {
+    if (error === 2) {
         if ($('#checkboxprov').prop('checked')) {
             $.post("index.php", {token: 1, email: email, pass: pass, ajax: "login"}, function(result) {
-                alert("$"+result+"$");
+                if(result===2){result=5;}
+                paint(result);
             });
             //alert("enviar ajax com a provider");
         } else {
             $.post("index.php", {token: 0, email: email, pass: pass, ajax: "login"}, function(result) {
-                alert("$"+result+"$");
+                if(result===2){result=5;}
+                paint(result);
             });
             //alert("enviar ajax com a user");
         }
@@ -81,6 +83,7 @@ function clean() {
     $('#pass_login').css("border-color", "none");
     $('#email_login').css("border-width", "1px");
     $('#pass_login').css("border-width", "1px");
+    //$('#email_login').effect("shake");
 }
 
 function closing() {
@@ -91,7 +94,7 @@ function closing() {
     clean();
 }
 
-function paint(error){
+function paint(error) {
     switch (error) {
         case 0: //email empty || email incorrect
             $('#email_login').css("border-color", "red");
@@ -103,7 +106,14 @@ function paint(error){
             $('#pass_login').css("border-color", "red");
             $('#pass_login').css("border-width", "3px");
             break;
+        case 5: //All correct
+            document.location.href=document.URL;
+            break;
         case 3: //The user is banned
+            alert("usuario baneado");
+            break;
+        case 4: //The user is admin
+            document.location.href=document.URL;
             break;
     }
 }
