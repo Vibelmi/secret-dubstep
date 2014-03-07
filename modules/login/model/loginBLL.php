@@ -38,27 +38,6 @@ class loginBll {
         }
     }
 
-    function delete_attemps($idu_) { //Query to delete attemps
-        $query = new SqlQueryBuilder("delete");
-        $query->setTable($this->table_login_attempts);
-        $query->setWhere($this->id . " = " . "'" . $idu_ . "'");
-
-        $this->bd->run($query->buildQuery());
-    }
-
-    function insert_attempt($idu_) { //Query to insert attemps
-        $query = new SqlQueryBuilder("insert");
-        $query->setTable($this->table_login_attempts);
-
-        $query->addColumn($this->id);
-        $query->addColumn("time");
-
-        $query->addValue($idu_);
-        $query->addValue(time());
-
-        $this->bd->run($query->buildQuery());
-    }
-
     function select_attempts($idu_) { //Query to get all attemps
         $query = new SqlQueryBuilder("select");
         $query->setTable($this->table_login_attempts);
@@ -78,18 +57,6 @@ class loginBll {
         return $resp1;
     }
 
-    function update_status($status, $idu_) { // Change status BANNED or NOT BANNED
-        $query = new SqlQueryBuilder("update");
-        $query->setTable($this->table);
-
-        $query->addColumn("status");
-        $query->addValue($status);
-
-        $query->setWhere($this->id . " = " . "'" . $idu_ . "'");
-
-        $this->bd->run($query->buildQuery());
-    }
-
     function select_users($email_) {
         $query = new SqlQueryBuilder("select");
         $query->setTable($this->table);
@@ -102,8 +69,12 @@ class loginBll {
 
         $resp = $this->bd->run($query->buildQuery())->fetch_assoc();
 
-        $resp1['id'] = $resp[$this->id];
-        $resp1['status'] = $resp['status'];
+        if (!empty($resp)) {
+            $resp1['id'] = $resp[$this->id];
+            $resp1['status'] = $resp['status'];
+        } else {
+            $resp1 = $resp;
+        }
 
         return $resp1;
     }
@@ -119,6 +90,51 @@ class loginBll {
         $resp = $this->bd->run($query->buildQuery())->fetch_assoc();
 
         return $resp;
+    }
+
+    function update_status($status, $idu_) { // Change status BANNED or NOT BANNED
+        $query = new SqlQueryBuilder("update");
+        $query->setTable($this->table);
+
+        $query->addColumn("status");
+        $query->addValue($status);
+
+        $query->setWhere($this->id . " = " . "'" . $idu_ . "'");
+
+        $this->bd->run($query->buildQuery());
+    }
+
+    function update_password($idu_, $pass_) { // Change password
+        $query = new SqlQueryBuilder("update");
+        $query->setTable($this->table_passwords);
+
+        $query->addColumn("password");
+        $query->addValue($pass_);
+
+        $query->setWhere($this->id . " = " . "'" . $idu_ . "'");
+
+        $this->bd->run($query->buildQuery());
+    }
+
+    function insert_attempt($idu_) { //Query to insert attemps
+        $query = new SqlQueryBuilder("insert");
+        $query->setTable($this->table_login_attempts);
+
+        $query->addColumn($this->id);
+        $query->addColumn("time");
+
+        $query->addValue($idu_);
+        $query->addValue(time());
+
+        $this->bd->run($query->buildQuery());
+    }
+
+    function delete_attemps($idu_) { //Query to delete attemps
+        $query = new SqlQueryBuilder("delete");
+        $query->setTable($this->table_login_attempts);
+        $query->setWhere($this->id . " = " . "'" . $idu_ . "'");
+
+        $this->bd->run($query->buildQuery());
     }
 
 }

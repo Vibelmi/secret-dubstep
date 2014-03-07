@@ -29,41 +29,22 @@ window.onload = function() {
         $('#sign_in').slideToggle("slow");
     });
 
+    $('#remeber').click(rememberpass);
+
 };
 
 function login() {
     var email = $('#email_login').val();
     var pass = $('#pass_login').val();
     clean();
-    var emailReg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/;
-    var passReg = /^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%? "]).*$/;
     var error = 0;
 
-    if (email !== "") {
-        if (emailReg.test(email)) {
-            error = 2;
-        } else {//email incorrect
-            error = 0;
-        }
-    } else { //email empy
-        error = 0;
-    }
+    error = validateEmail(email);
 
     if (error === 2) {
-        if (pass !== "") {
-            if (passReg.test(pass)) {
-                error === 2;
-            } else { //pass incorrect
-                error = 1;
-            }
-        } else { //pass empty
-            error = 1;
-        }
+        error = validatePass(pass);
     }
-
-    paint(error);
-
-    if (error === 2) { //Enviar Ajax
+    if (error === 2) { //Send Ajax
         var token;
         if ($('#checkboxprov').prop('checked')) { //provider
             token = 1;
@@ -73,12 +54,75 @@ function login() {
         $.post("index.php", {token: token, email: email, pass: pass, ajax: "login"}, function(result) {
             result = $.trim(result);
             result = parseInt(result);
-            if (result === 2) {
-                result = 5;
-            }
             paint(result);
         });
+    } else {
+        paint(error);
     }
+}
+
+function rememberpass() {
+    var email = $('#email_login').val();
+    clean();
+    var error = 0;
+
+    error = validateEmail(email);
+    if (error === 0) {
+        error = 5;
+    }
+
+    if (error === 2) { //Send Ajax
+        var token;
+        if ($('#checkboxprov').prop('checked')) { //provider
+            token = 1;
+        } else { //user
+            token = 0;
+        }
+        $.post("index.php", {token: token, email: email, new_pass: "", ajax: "login"}, function(result) {
+            result = $.trim(result);
+            if (isNaN(result)) {
+                resetOk(result);
+            } else {
+                result = parseInt(result);
+                if (result === 0) {
+                    result = 5;
+                }
+                paint(result);
+            }
+        });
+    } else {
+        paint(error);
+    }
+}
+
+function validateEmail(email) {
+    var emailReg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]{2,4})+$/;
+    var error_;
+    if (email !== "") {
+        if (emailReg.test(email)) {
+            error_ = 2;
+        } else {//email incorrect
+            error_ = 0;
+        }
+    } else { //email empy
+        error_ = 0;
+    }
+    return error_;
+}
+
+function validatePass(pass) {
+    var passReg = /^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%? "]).*$/;
+    var error_;
+    if (pass !== "") {
+        if (passReg.test(pass)) {
+            error_ = 2;
+        } else { //pass incorrect
+            error_ = 1;
+        }
+    } else { //pass empty
+        error_ = 1;
+    }
+    return error_;
 }
 
 function clean() {
@@ -113,6 +157,9 @@ function paint(error) {
             $('#pass_login').css("border-width", "3px");
             $('#pass_login').effect('shake');
             break;
+        case 2: //All correct
+            document.location.href = document.URL;
+            break;
         case 3: //The user is banned
             $('#login').prepend("<img id='banned' src='modules/login/images/banned.png'>");
             $('#banned').lightbox_me();
@@ -120,8 +167,27 @@ function paint(error) {
         case 4: //The user is admin
             document.location.href = document.URL;
             break;
-        case 5: //All correct
-            document.location.href = document.URL;
+        case 5: //email empty || email incorrect
+            $('#email_login').css("border-color", "red");
+            $('#email_login').css("border-width", "3px");
+            $('#email_login').effect('shake');
             break;
     }
+
+}
+
+function resetOk(result) {
+    alert(result);
+    /*$('#login').prepend("<div id='dialog' title='Basic dialo'></div>");
+     $("#dialog").dialog({
+     autoOpen: true,
+     show: {
+     effect: "blind",
+     duration: 1000
+     },
+     hide: {
+     effect: "explode",
+     duration: 1000
+     }
+     });*/
 }

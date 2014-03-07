@@ -11,6 +11,7 @@
             <signingoogle>Sign In with Google</signingoogle>
             <signintwitter>Sign In with Twitter</signintwitter>
             <provider>Sign In as Provider</provider>
+            <changepass>Your password has been reset and sent to your email</changepass>
 	</translation>
 	<translation language="es">
             <login>Iniciar Sesión</login>
@@ -23,5 +24,6 @@
             <signingoogle>Ingresa con Google</signingoogle>
             <signintwitter>Ingresa con Twitter</signintwitter>
             <provider>Ingresa como Proveedor</provider>
+            <changepass>La contraseña ha sido restablecida y enviada a su email</changepass>
 	</translation>
 </module>

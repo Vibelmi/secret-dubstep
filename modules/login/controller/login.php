@@ -17,7 +17,6 @@ class login extends module {
         include("modules/login/controller/index.php");
         $returned = ob_get_contents();
         ob_end_clean();
-        $returned .= $this->content->name . " " . $this->content->age;
         return $returned;
     }
 
