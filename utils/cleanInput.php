@@ -14,13 +14,17 @@ function cleanInput($input){
 function cleanGET(){
   global $CLEANED_GET;
   foreach ($CLEANED_GET as $key => $value) { 
-    $CLEANED_GET[$key] = cleanInput($value);
+      if(gettype($value) == "string"){
+          $CLEANED_GET[$key] = cleanInput($value);
+      }
   }
 }
 function cleanPOST(){
   global $CLEANED_POST;
   foreach ($CLEANED_POST as $key => $value) { 
-    $CLEANED_POST[$key] = cleanInput($value);
+      if(gettype($value) == "string"){
+          $CLEANED_POST[$key] = cleanInput($value);
+      }
   }
 }
 
