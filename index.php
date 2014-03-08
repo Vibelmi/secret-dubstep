@@ -3,15 +3,19 @@
   //Use this file for all the includes!!
   include_once("utils/includes.php");
   
-  //This is the global variable to use Smarty. You can call it as $GLOBALS['smarty']
-  $smarty = new Smarty();
-  $smarty->setTemplateDir('views/templates');
-  $smarty->setCompileDir('views/templates_c');
-  
   //The current url
   $URL = $_SERVER['REQUEST_URI'];
   $home=explode("?",$URL); 
   /*<?php echo $GLOBALS['home'][0]; ?>*/
+  
+  //This is the global variable to use the mail system. You can call it as $GLOBALS['mailer']
+  $mailer = new mailer();
+  
+  //This is the global variable to use Smarty. You can call it as $GLOBALS['smarty']
+  $smarty = new Smarty();
+  $smarty->setTemplateDir('views/templates');
+  $smarty->setCompileDir('views/templates_c');
+  $smarty->assign('globals', $GLOBALS);
   
   //Create the object that creates the page
   $pageBuilder = new pageBuilder();
