@@ -1,6 +1,7 @@
 <?php
 /*
 * Here all inputs will be cleaned of not appropriate content
+* Only string inputs are validated and cleaned.
 */
 //THIS TWO ARE THE VARIABLES THAT WE MUST USE IN ALL THE APPLICATION.
 $CLEANED_GET = $_GET;

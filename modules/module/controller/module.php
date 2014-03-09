@@ -5,8 +5,8 @@
 class module{
 	protected $position; //The position where the module will be placed
 	protected $display; //Enable or disable the module
-	protected $content;
-	protected $contentFilePath;
+	protected $content; //Multilanguage content
+	protected $contentFilePath; //Multilanguage content file path
 	
 	function __construct($fPath = "modules/module/data/content.xml") {
 		$this->contentFilePath = $fPath;
@@ -26,10 +26,17 @@ class module{
 	public function getPosition(){
 		return $this->position;
 	}
+        /*
+         * This method load the content from the multilanguage content file in the module object so it can be used
+         */
 	protected function getContent(){
 		$xml = new xmlRead($this->contentFilePath);
 		return $xml->getXml();
 	}
+        /*
+         * This method load the content of the gived language from the multilanguage content file in the module object so it can be used
+         * This is by default called in the constructor to load the content of the current selected language
+         */
 	protected function getContentByLang($lang){
 		$xml = new xmlRead($this->contentFilePath);
 		$cont = $xml->getXml();

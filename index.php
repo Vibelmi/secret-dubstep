@@ -27,7 +27,7 @@
       $pageBuilder->printModule($GLOBALS['CLEANED_POST']["ajax"]);
   }else{
     $page = "";
-    if (isset($GLOBALS['CLEANED_GET']["page"])) { //Get langunage
+    if (isset($GLOBALS['CLEANED_GET']["page"])) {
         $page = $GLOBALS['CLEANED_GET']["page"];
     }
     $pageBuilder->printPage($page);

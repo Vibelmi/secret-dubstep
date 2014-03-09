@@ -20,8 +20,6 @@ class pageBuilder{
 	
 		$this->loadModules();
 		$this->loadModuleStyles();
-
-
 		$this->displayAreas = array("header" => "",
 						"footer" => "",
 						"contentTop" => "",
@@ -44,7 +42,7 @@ class pageBuilder{
 	/*
 	* This method loads all modules in the modules folder as objects.
 	*/
-	function loadModules(){
+	private function loadModules(){
 		$modulesDirectorys = scandir("modules");
 		foreach($modulesDirectorys as $moduleName){
 			if($moduleName != "." && $moduleName != ".." && $moduleName != "pages.xml" && $moduleName != "module"){
@@ -56,7 +54,7 @@ class pageBuilder{
 	/*
 	* This method loads all the css files of the modules. This css files may be in the "css" file inside the module file.
 	*/
-	function loadModuleStyles(){
+	private function loadModuleStyles(){
 		$this->styles = "";
 		$modulesDirectorys = scandir("modules");
 		foreach($modulesDirectorys as $moduleName){
@@ -74,7 +72,10 @@ class pageBuilder{
 			}
 		}
 	}
-        function printModule($moduleName){
+        /*
+	* This method print the content of a single module. This is used for ajax calls.
+	*/
+        public function printModule($moduleName){
             if(array_key_exists($moduleName, $this->modules)){
                 echo $this->modules[$moduleName]->printContent();
             }
@@ -82,7 +83,7 @@ class pageBuilder{
 	/*
 	* This method load the contents of the modules into the displayAreas array.
 	*/
-	function createPage($requestedPage){
+	private function createPage($requestedPage){
 		$page = $this->searchPage($requestedPage);
 		foreach($page->module as $module){
 			$module = (string)$module;
@@ -95,7 +96,7 @@ class pageBuilder{
 	/*
 	* This method print the page. Use Smarty to give the displayAreas array of content to the tpl.
 	*/
-	function printPage($requestedPage){
+	public function printPage($requestedPage){
 		include("views/header.php");
 		
 		$this->createPage($requestedPage);
@@ -111,7 +112,7 @@ class pageBuilder{
 	* This method search a page into our pages variable, that reads from the pages.xml
 	* If the page is not founded returns the first one.
 	*/
-	function searchPage($pageToSearch){
+	private function searchPage($pageToSearch){
 		foreach($this->pages->page as $page){
 			if($page["name"] == $pageToSearch){
 				return $page;
@@ -122,7 +123,7 @@ class pageBuilder{
 	/*
 	* This method add the $content to the corresponding position in the displayAreas array
 	*/
-	function addContent($position, $content){
+	private function addContent($position, $content){
 		if(array_key_exists($position,$this->displayAreas)){
 			$this->displayAreas[$position] .= $content;
 		}
