@@ -12,6 +12,10 @@
         <module>login</module>
         <module>create_tickets</module>
     </page>
+        <page name="ltickets">
+        <module>login</module>
+        <module>list_tickets</module>
+    </page>
     <page name="registry">
         <module>login</module>
         <module>registry</module>
