@@ -8,6 +8,8 @@
   $home=explode("?",$URL); 
   /*<?php echo $GLOBALS['home'][0]; ?>*/
   
+  session_start();
+  
   //This is the global variable to use the mail system. You can call it as $GLOBALS['mailer']
   $mailer = new mailer();
   
