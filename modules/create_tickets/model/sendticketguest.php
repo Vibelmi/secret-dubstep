@@ -20,7 +20,7 @@ if (isset($GLOBALS['CLEANED_POST']["subject"], $GLOBALS['CLEANED_POST']["descrip
     $query2->addValue("'$email'");
     $query2->addValue("'$subject'");
     $query2->addValue("'$description'");
-    $query2->addValue("'$description'");
+    $query2->addValue("'$password'");
     
     $bd->run($query2->buildQuery());
     include("modules/create_tickets/view/success.php"); 
