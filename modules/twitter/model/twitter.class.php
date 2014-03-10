@@ -72,8 +72,7 @@ class tweet {
     }
 
     function call() {
-        foreach ($this->twitter() as $key => $value) {
-            foreach ($value as $key => $data) {
+            foreach ($this->twitter()->statuses as $key => $data) {
                 $this->setAvatar($data->user->profile_image_url);
                 $this->setAuthor($data->user->name);                
                 $this->setUser($data->user->screen_name);                                
@@ -84,7 +83,6 @@ class tweet {
                     $this->setTweet_length($this->getTweet_length() + 1);
                 }
             }
-        }
         //print_r($this->author);
     }
     /**

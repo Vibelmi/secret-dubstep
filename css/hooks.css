@@ -21,7 +21,7 @@ body{
 .bottomLeft, .bottomCenter, .bottomRight{
 	width:100%;
         height:250px;
-        overflow:hidden;
+        overflow:auto;
 	margin:1% 0px;
 }
 
