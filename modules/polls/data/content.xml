@@ -1,0 +1,12 @@
+<module>
+	<translation language="en">
+		<title>Title for the new poll</title>
+                <options>Write the options.</options>
+                <send>Create poll</send>
+	</translation>
+	<translation language="es">
+		<title>Título para la nueva encuesta</title>
+                <options>Escribe las opciones.</options>                
+                <send>Crear encuesta</send>                
+	</translation>		
+</module>
