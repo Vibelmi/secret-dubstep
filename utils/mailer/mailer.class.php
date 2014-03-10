@@ -17,7 +17,7 @@ class mailer{
 	* $contentMail -> The content of the sended email. Can be html.
 	* $receiverMail -> The destination address of the message.
 	*/
-	function sendSingleMail($subjectMail, $contentMail, $receiverMail){
+	public function sendSingleMail($subjectMail, $contentMail, $receiverMail){
 		$mail = new PHPMailer;
                 $mail->IsSMTP(); 						// telling the class to use SMTP
                 $mail->SMTPAuth   = true;                  			// enable SMTP authentication
@@ -48,7 +48,7 @@ class mailer{
 	* $contentMail -> The content of the sended email. Can be html.
 	* $mails -> An array with all the destinations address of the message.
 	*/
-	function sendMultiMail($subjectMail, $contentMail, $mails){
+	public function sendMultiMail($subjectMail, $contentMail, $mails){
 		while ($mail = mysqli_fetch_assoc($mails)){
 			$this->sendSingleMail($subjectMail, $contentMail, $mail['email']);
 		}
@@ -58,7 +58,7 @@ class mailer{
 	* $mailType -> The name of the template we want to load
 	* $content -> An array with all the dynamic parameters we want to load in the template.
 	*/
-	function loadMailView($mailType, $content){
+	private function loadMailView($mailType, $content){
 
 		
 		$view = $GLOBALS["smarty"]->fetch("views/templates/mailer/mailHeader.tpl");
@@ -72,7 +72,7 @@ class mailer{
 	* $receiverType -> The type of the receiver, can be "USER" or "PROVIDER"
 	* $receiverId -> The id of the receiver
 	*/
-        function getMailDirection($receiverType,$receiverId){
+        private function getMailDirection($receiverType,$receiverId){
             $bd = Db::getInstance();
             
             $query = new SqlQueryBuilder("select");
@@ -97,7 +97,7 @@ class mailer{
 	* This function is for: Load all the email address of a particular user type from the database
 	* $receiverType -> The type of the receivers, can be "USER" or "PROVIDER"
 	*/
-	function getAllMailDirections($receiverType){
+	private function getAllMailDirections($receiverType){
 			$bd = Db::getInstance();
             
             $query = new SqlQueryBuilder("select");
@@ -120,7 +120,7 @@ class mailer{
 	* 
 	* IMPORTANT: You must send the mail AFTER the new product has been added.
 	*/
-	function mailNewProduct($productId){
+	public function mailNewProduct($productId){
 		$product = new Product($productId);
 		$product->_get_DB_data($productId);
 		$product->_charge_descriptions();

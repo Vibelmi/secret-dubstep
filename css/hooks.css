@@ -1,16 +1,34 @@
 html{
 }
 body{
-	margin: auto;
-	width:900px;
-	background:white;
+	width:100%;
+	max-width:900px;
+	margin:auto;
+	background:#f1f1f1;
 }
-section{
-	border:solid 1px #666;
+.clear{
+	clear:both;
 }
-aside{
-	width:31%;
-	margin:1%;
-	float:left;
-	border:solid 1px #666;
+.contentTop, .contentCenter, .contentBottom, .bottomLeft, .bottomCenter, .bottomRight{
+    	background:#FFF;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+}
+.contentTop, .contentCenter, .contentBottom{
+        margin:1% 0px;
+}
+.bottomLeft, .bottomCenter, .bottomRight{
+	width:100%;
+        height:250px;
+        overflow:hidden;
+	margin:1% 0px;
+}
+
+@media all and (min-width: 600px) {
+    .bottomLeft, .bottomCenter, .bottomRight{
+            width:31%;
+            margin:1%;
+            float:left;
+    }
 }
