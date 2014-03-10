@@ -7,7 +7,7 @@ if (isset($GLOBALS['CLEANED_POST']["subject"], $GLOBALS['CLEANED_POST']["descrip
     $description = filter_var($GLOBALS['CLEANED_POST']["description"], FILTER_SANITIZE_STRING);
     
     //The idprov saved in the session
-    $idprov = $_SESSION['idprov'];
+    $idprov = $_SESSION['id'];
     
     $query2 = new SqlQueryBuilder("insert");
     $query2->setTable("prov_tickets");

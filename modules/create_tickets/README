@@ -6,9 +6,7 @@ Session variables needed
 ========================
 $_SESSION['token'] --> To know if a ticket is created by a user, provider or guest. user = 0, provider = 1, guest = other
 
-$_SESSION['idu'] --> If a user logs on. We need their idu.
-
-$_SESSION['idprov'] --> If a provider logs on. We need their idprov.
+$_SESSION['id'] --> The idu or the idprov of the user/provider logued.
 
 $_SESSION['email'] --> Where We store the user's email or the provider's email.
 

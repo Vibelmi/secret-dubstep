@@ -6,7 +6,7 @@ if (isset($GLOBALS['CLEANED_POST']["subject"], $GLOBALS['CLEANED_POST']["descrip
     $subject = filter_var($GLOBALS['CLEANED_POST']["subject"], FILTER_SANITIZE_STRING);
     $description = filter_var($GLOBALS['CLEANED_POST']["description"], FILTER_SANITIZE_STRING);
     
-    $idu = $_SESSION['idu'];
+    $idu = $_SESSION['id'];
     $query2 = new SqlQueryBuilder("insert");
     $query2->setTable("user_tickets");
 
