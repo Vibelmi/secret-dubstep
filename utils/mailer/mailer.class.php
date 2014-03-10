@@ -8,7 +8,7 @@ class mailer{
 	private $senderPassword;    //Password of the above email account
 	function __construct(){
 			$this->senderName = 'Greedy Monkey';
-			$this->senderMail = "greedymonkeyweb@gmail.com";
+			$this->senderMail = "greedymonkeysend@gmail.com";
 			$this->senderPassword = "-32AX25am-";
 	}
         /*
@@ -59,8 +59,6 @@ class mailer{
 	* $content -> An array with all the dynamic parameters we want to load in the template.
 	*/
 	private function loadMailView($mailType, $content){
-
-		
 		$view = $GLOBALS["smarty"]->fetch("views/templates/mailer/mailHeader.tpl");
 		$GLOBALS["smarty"]->assign('Content',$content);
 		$view .= $GLOBALS["smarty"]->fetch("views/templates/mailer/".$mailType.".tpl");
@@ -69,7 +67,7 @@ class mailer{
 	}
         /*
 	* This function is for: Load the email address from  database with the gived id of the receiver.
-	* $receiverType -> The type of the receiver, can be "USER" or "PROVIDER"
+	* $receiverType -> The type of the receiver. Can be "USER", "PROVIDER" or "GUEST".
 	* $receiverId -> The id of the receiver
 	*/
         private function getMailDirection($receiverType,$receiverId){
@@ -82,10 +80,15 @@ class mailer{
                 $query->addColumn("email");
                 $query->setWhere("idu = " . "'" . $receiverId . "'");
                 $query->setLimit(1);
-            }else{
+            }else if($receiverType == "PROVIDER"){
                 $query->setTable("providers");
                 $query->addColumn("email");
                 $query->setWhere("idprov = " . "'" . $receiverId . "'");
+                $query->setLimit(1);
+            }else{
+                $query->setTable("guests");
+                $query->addColumn("email");
+                $query->setWhere("idg = " . "'" . $receiverId . "'");
                 $query->setLimit(1);
             }
             
@@ -95,7 +98,7 @@ class mailer{
         }
         /*
 	* This function is for: Load all the email address of a particular user type from the database
-	* $receiverType -> The type of the receivers, can be "USER" or "PROVIDER"
+	* $receiverType -> The type of the receiver. Can be "USER", "PROVIDER" or "GUEST".
 	*/
 	private function getAllMailDirections($receiverType){
 			$bd = Db::getInstance();
@@ -112,9 +115,37 @@ class mailer{
             $mails = $bd->run($query->buildQuery());
             return $mails;
 	}
+        /*
+	* This function is for: Load all the information of the ticket based on the ticket id and the receiver type
+	* $receiverType -> The type of the receiver. Can be "USER", "PROVIDER" or "GUEST".
+	*/
+        private function getTicketsInfo($receiverType,$ticketId){
+	    $bd = Db::getInstance();
+            $query = new SqlQueryBuilder("select");
+            
+            if($receiverType == "USER"){
+                $query->setTable("user_tickets");
+                $query->addColumn("*");
+                $query->setWhere("idtu = ".$ticketId);
+                $ticketInfo = $bd->run($query->buildQuery())->fetch_assoc();
+                
+            }else if($receiverType == "PROVIDER"){
+                $query->setTable("prov_tickets");
+                $query->addColumn("*");
+                $query->setWhere("idtp = ".$ticketId);
+                $ticketInfo = $bd->run($query->buildQuery())->fetch_assoc();
+            }else{
+                $query->setTable("guest_tickets");
+                $query->addColumn("*");
+                $query->setWhere("idtg = ".$ticketId);
+                $ticketInfo = $bd->run($query->buildQuery())->fetch_assoc();
+            }
+            
+            return $ticketInfo;
+	}
 	/*
 	* This function is for: Sending spam when a new product is added.
-	* $receiverType -> The type of the receiver. Can be "USER" or "PROVIDER".
+	* $receiverType -> The type of the receiver. Can be "USER", "PROVIDER" or "GUEST".
 	* $receiverId -> The Id of the receiver
 	* $productId -> The Id of the new product.
 	* 
@@ -135,4 +166,27 @@ class mailer{
 		$this->sendMultiMail("A wild product appears!",$this->loadMailView("userNewProduct", $content),$userMails);
 		$this->sendMultiMail("We are selling a new product.",$this->loadMailView("providerNewProduct", $content),$providerMails);
 	}
+        /*
+	* This function is for: Sending a confirmation message when a new tickets is sended.
+	* $receiverType -> The type of the receiver. Can be "USER", "PROVIDER" or "GUEST".
+	* $receiverId -> The Id of the receiver
+	* $productId -> The Id of the new ticket.
+	* 
+	* IMPORTANT: You must send the mail AFTER the new ticked has been added.
+	*/
+        public function mailNewTicket($receiverType,$ticketId){
+            $ticketInfo = $this->getTicketsInfo($receiverType,$ticketId);
+            if($receiverType == "USER"){
+                $mail = $this->getMailDirection($receiverType,$ticketInfo["idu"]);
+                $contentMail = $this->loadMailView("mailNewTicketUser", $ticketInfo);
+            }else if($receiverType == "PROVIDER"){
+                $mail = $this->getMailDirection($receiverType,$ticketInfo["idprov"]);
+                $contentMail = $this->loadMailView("mailNewTicketProvider", $ticketInfo);
+            }else{
+                $mail = $ticketInfo["email"];
+                $contentMail = $this->loadMailView("mailNewTicketGuest", $ticketInfo);
+            }
+            
+            $this->sendSingleMail("Your ticket has been sended!", $contentMail, $mail);
+        }
 }

@@ -5,6 +5,7 @@
   
   //The current url
   $URL = $_SERVER['REQUEST_URI'];
+  $HOST = $_SERVER['HTTP_HOST'];
   $home=explode("?",$URL); 
   /*<?php echo $GLOBALS['home'][0]; ?>*/
   
