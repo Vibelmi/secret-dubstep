@@ -3,7 +3,7 @@
 <div>
     <form id="ticketform" action="<?php echo $GLOBALS['URL']; ?>" method="post">
         <?php
-        if ($_SESSION['email']) {
+        if (isset($_SESSION['email'])) {
             $email = $_SESSION['email'];
             echo "<input name='temail' id='temail' type='email' value='$email' disabled='disabled'>";
         }else{

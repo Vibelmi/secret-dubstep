@@ -3,8 +3,8 @@
 $bd = Db::getInstance();
 
 if (isset($GLOBALS['CLEANED_POST']["subject"], $GLOBALS['CLEANED_POST']["description"])) {
-    $subject = filter_input(INPUT_POST, 'subject', FILTER_SANITIZE_STRING);
-    $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
+    $subject = filter_var($GLOBALS['CLEANED_POST']["subject"], FILTER_SANITIZE_STRING);
+    $description = filter_var($GLOBALS['CLEANED_POST']["description"], FILTER_SANITIZE_STRING);
     
     $idu = $_SESSION['idu'];
     $query2 = new SqlQueryBuilder("insert");
@@ -21,6 +21,6 @@ if (isset($GLOBALS['CLEANED_POST']["subject"], $GLOBALS['CLEANED_POST']["descrip
     $bd->run($query2->buildQuery());
     include("modules/create_tickets/view/success.php");
 }else{
-    include("modules/create_tickets/view/main.php"); 
+    include("modules/create_tickets/view/fail.php"); 
 }
 ?>
