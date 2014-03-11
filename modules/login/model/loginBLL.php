@@ -62,6 +62,7 @@ class loginBll {
         $query->setTable($this->table);
 
         $query->addColumn($this->id);
+        $query->addColumn("name");
         $query->addColumn("status");
 
         $query->setWhere("email = " . "'" . $email_ . "'");
@@ -71,6 +72,7 @@ class loginBll {
 
         if (!empty($resp)) {
             $resp1['id'] = $resp[$this->id];
+            $resp1['name'] = $resp['name'];
             $resp1['status'] = $resp['status'];
         } else {
             $resp1 = $resp;

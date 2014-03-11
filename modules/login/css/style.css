@@ -1,4 +1,4 @@
-#btnlogin{
+.btnlogin{
     float: right;
     font-size: 14px;
     padding: 10px 20px;
@@ -9,7 +9,7 @@
         inset 0px 0px 1px rgba(255,255,255,0.6);
 }
 
-#btnlogin:hover{
+.btnlogin:hover{
     color: #08C;
     cursor: pointer;
     text-decoration: underline;

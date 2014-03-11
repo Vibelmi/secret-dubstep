@@ -8,6 +8,7 @@ class validateDAO {
     private $pass;
     private $error;
     private $idu;
+    private $name;
     private $status;
 
     function __construct() {
@@ -34,7 +35,9 @@ class validateDAO {
             $this->simple_password_validation();
         }
 
-        $this->isAdmin();
+        if ($this->error === 2) {
+            $this->isAdmin();
+        }
 
         if ($this->error === 2) { //Check the email in the database
             $resp = $this->bll->select_users($this->email);
@@ -42,6 +45,7 @@ class validateDAO {
                 $this->error = 0;
             } else { //The email is in the database
                 $this->idu = $resp['id'];
+                $this->name = $resp['name'];
                 $this->status = $resp['status'];
                 $this->check_email_database();
             }
@@ -89,9 +93,9 @@ class validateDAO {
     function isAdmin() {
         include("modules/login/model/adminLogin.inc.php");
         if ($this->email === $emailAdmin && $this->pass === $password) {
-            session_start();
             $_SESSION['token'] = 10;
             $_SESSION['email'] = $this->email;
+            $_SESSION['name'] = $name;
             $this->error = 4;
         }
     }
@@ -146,10 +150,10 @@ class validateDAO {
     }
 
     function all_correct() {
-        session_start();
         $_SESSION['token'] = $this->bll->getType();
         $_SESSION['email'] = $this->email;
         $_SESSION['id'] = $this->idu;
+        $_SESSION['name'] = $this->name;
     }
 
 }

@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
 <module>
 	<translation language="en">
             <login>Log In</login>
-            <user>E-Mail</user>
+            <logout>Log Out</logout>
+            <email>E-Mail</email>
             <pass>Password</pass>
             <rememberpass>Remember password?</rememberpass>
             <register>Register</register>
@@ -14,16 +14,17 @@
             <changepass>Your password has been reset and sent to your email</changepass>
 	</translation>
 	<translation language="es">
-            <login>Iniciar Sesión</login>
+            <login>Iniciar SesiÃ³n</login>
+            <logout>Cerrar SesiÃ³n</logout>
             <user>Correo</user>
-            <pass>Contraseña</pass>
-            <rememberpass>Recordar la contraseña?</rememberpass>
+            <pass>ContraseÃ±a</pass>
+            <rememberpass>Recordar la contraseÃ±a?</rememberpass>
             <register>Registrate</register>
             <signin>Ingresa con...</signin>
             <signinfacebook>Ingresa con Facebook</signinfacebook>
             <signingoogle>Ingresa con Google</signingoogle>
             <signintwitter>Ingresa con Twitter</signintwitter>
             <provider>Ingresa como Proveedor</provider>
-            <changepass>La contraseña ha sido restablecida y enviada a su email</changepass>
+            <changepass>La contraseÃ±a ha sido restablecida y enviada a su email</changepass>
 	</translation>
 </module>
