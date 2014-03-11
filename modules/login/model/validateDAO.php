@@ -10,17 +10,19 @@ class validateDAO {
     private $idu;
     private $name;
     private $status;
+    private $cont;
 
-    function __construct() {
+    function __construct($cont_) {
+        $this->cont=$cont_;
         include("modules/login/model/loginBLL.php");
         $this->bll = loginBll::getInstance();
         $this->email = $GLOBALS['CLEANED_POST']["email"];
         $this->pass = $GLOBALS['CLEANED_POST']["pass"];
     }
 
-    public static function getInstance() {
+    public static function getInstance($cont) {
         if (!(self::$_instance instanceof self)) {
-            self::$_instance = new self();
+            self::$_instance = new self($cont);
         }
         return self::$_instance;
     }
@@ -51,9 +53,17 @@ class validateDAO {
             }
         }
 
+        if ($this->error === 2) {
+            $resp = $this->bll->select_test_numbers($this->idu);
+            if (!empty($resp)) {
+                $this->error = $this->cont->validationemail;
+            }
+        }
+
         if ($this->error === 2) { //Check password in Database
-            $resp = $this->bll->select_passwords($this->idu, $this->pass);
-            if (empty($resp)) { //Password no matches
+            $resp = $this->bll->select_passwords($this->idu);
+            $pass = $this->decryptPassword($resp['password']);
+            if ($this->pass !== $pass) { //Password no matches
                 $this->check_password_database();
             } else { //The password is the that is in the database, delete last attemts if it have
                 $this->bll->delete_attemps($this->idu);
@@ -154,6 +164,15 @@ class validateDAO {
         $_SESSION['email'] = $this->email;
         $_SESSION['id'] = $this->idu;
         $_SESSION['name'] = $this->name;
+    }
+
+    function decryptPassword($pass) {
+        $key = '-32AX25am-';
+        $data = base64_decode($pass);
+        $iv = substr($data, 0, mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_CBC));
+
+        $decrypted = rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, hash('sha256', $key, true), substr($data, mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_CBC)), MCRYPT_MODE_CBC, $iv), "\0");
+        return $decrypted;
     }
 
 }

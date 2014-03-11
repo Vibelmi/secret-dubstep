@@ -1,8 +1,9 @@
 <?php
 
 if (isset($GLOBALS['CLEANED_POST']["email"]) && isset($GLOBALS['CLEANED_POST']["pass"]) && isset($GLOBALS['CLEANED_POST']["token"])) {
+    $cont = $this->content;
     include("modules/login/model/validateDAO.php");
-    validateDAO::getInstance()->validate($GLOBALS['CLEANED_POST']["token"]);
+    validateDAO::getInstance($cont)->validate($GLOBALS['CLEANED_POST']["token"]);
 } elseif (isset($GLOBALS['CLEANED_POST']["email"]) && isset($GLOBALS['CLEANED_POST']["new_pass"]) && isset($GLOBALS['CLEANED_POST']["token"])) {
     $cont = $this->content;
     include("modules/login/model/remember_passDAO.php");

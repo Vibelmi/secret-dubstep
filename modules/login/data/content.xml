@@ -12,11 +12,12 @@
             <signintwitter>Sign In with Twitter</signintwitter>
             <provider>Sign In as Provider</provider>
             <changepass>Your password has been reset and sent to your email</changepass>
+            <validationemail>Check your email an validate the account</validationemail>
 	</translation>
 	<translation language="es">
             <login>Iniciar Sesión</login>
             <logout>Cerrar Sesión</logout>
-            <user>Correo</user>
+            <email>Correo</email>
             <pass>Contraseña</pass>
             <rememberpass>Recordar la contraseña?</rememberpass>
             <register>Registrate</register>
@@ -26,5 +27,6 @@
             <signintwitter>Ingresa con Twitter</signintwitter>
             <provider>Ingresa como Proveedor</provider>
             <changepass>La contraseña ha sido restablecida y enviada a su email</changepass>
+            <validationemail>Revisa tu correo para validar la cuenta</validationemail>
 	</translation>
 </module>

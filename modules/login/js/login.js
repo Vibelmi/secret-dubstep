@@ -54,8 +54,12 @@ function login() {
         }
         $.post("index.php", {token: token, email: email, pass: pass, ajax: "login"}, function(result) {
             result = $.trim(result);
-            result = parseInt(result);
-            paint(result);
+            if (isNaN(result)) {
+                resetOk(result);
+            } else {
+                result = parseInt(result);
+                paint(result);
+            }
         });
     } else {
         paint(error);
@@ -179,6 +183,7 @@ function paint(error) {
 
 function resetOk(result) {
     alert(result);
+    closing();
     /*$('#login').prepend("<div id='dialog' title='Basic dialo'></div>");
      $("#dialog").dialog({
      autoOpen: true,

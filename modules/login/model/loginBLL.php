@@ -25,6 +25,7 @@ class loginBll {
     }
 
     function type($type) {
+        $this->type=$type;
         if ($type === "0") { //user
             $this->table = "users";
             $this->table_passwords = "user_passwords";
@@ -81,12 +82,25 @@ class loginBll {
         return $resp1;
     }
 
-    function select_passwords($idu_, $pass_) {
+    function select_passwords($idu_) {
         $query = new SqlQueryBuilder("select");
         $query->setTable($this->table_passwords);
         $query->addColumn($this->id);
         $query->addColumn("password");
-        $query->setWhere($this->id . " = " . "'" . $idu_ . "'" . " AND " . "password = " . "'" . $pass_ . "'");
+        $query->setWhere($this->id . " = " . "'" . $idu_ . "'");
+        $query->setLimit(1);
+
+        $resp = $this->bd->run($query->buildQuery())->fetch_assoc();
+
+        return $resp;
+    }
+    
+    function select_test_numbers($idu_) {
+        $query = new SqlQueryBuilder("select");
+        $query->setTable('test_numbers');
+        $query->addColumn('id');
+       
+        $query->setWhere("id = " . "'" . $idu_ . "'");
         $query->setLimit(1);
 
         $resp = $this->bd->run($query->buildQuery())->fetch_assoc();
