@@ -62,7 +62,7 @@
                     <div data-thumb="<?php echo ('modules/slider/images/slides/thumbs/' . $archivo) ?>" data-src="<?php echo ('modules/slider/images/slides/' . $archivo) ?>">
                         <div class="camera_caption fadeFromBottom">
                             <!--Edit for get messages from DB or XML-->
-                            This is a description of the image, <em>this is optional</em>
+                            <!--This is a description of the image, <em>this is optional</em>-->
                         </div>
                     </div>   
 

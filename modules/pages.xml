@@ -2,7 +2,8 @@
     <page name="main">
         <module>slider</module>		
         <module>twitter</module>
-        <module>login</module>		                                
+        <module>login</module>	
+        <module>polls</module>	     	                                
     </page>
     <page name="profile">
         <module>login</module>

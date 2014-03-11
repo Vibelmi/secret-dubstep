@@ -1,6 +1,7 @@
 <?php
 
 include_once("modules/module/controller/module.php");
+
 class polls extends module {
 
     public $page = '';
@@ -33,9 +34,10 @@ class polls extends module {
         if ($this->page === 'admin_polls') {
             //  include_once('modules/polls/model/polls.class.php');
             include_once("modules/polls/view/list_polls.php");
-            include_once("modules/polls/view/new_poll.php");   
+            include_once("modules/polls/view/treat_polls.php");
+            include_once("modules/polls/view/new_poll.php");
         } else {
-            echo ('Noooo');
+            include_once("modules/polls/view/show_poll.php");
         };
 
         $returned = ob_get_contents();

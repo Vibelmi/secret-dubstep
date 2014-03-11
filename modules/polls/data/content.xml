@@ -1,12 +1,31 @@
 <module>
-	<translation language="en">
-		<title>Title for the new poll</title>
-                <options>Write the options.</options>
-                <send>Create poll</send>
-	</translation>
-	<translation language="es">
-		<title>Título para la nueva encuesta</title>
-                <options>Escribe las opciones.</options>                
-                <send>Crear encuesta</send>                
-	</translation>		
+    <translation language="en">
+        <title>Title for the new poll</title>
+        <options>Write the options.</options>
+        <send>Create poll</send>
+        <votes>votes</votes>
+        <treat>Treat polls</treat>
+        <state>Change active poll</state>
+        <modify>Modify</modify>
+        <delete>Delete</delete>
+        <select_one_option>Select one option</select_one_option>
+        <launch_treat>Launch process</launch_treat>
+        <new_poll>Create new poll</new_poll>
+        <polls_list>Polls list</polls_list>
+    </translation>
+    <translation language="es">
+        <title>Título para la nueva encuesta</title>
+        <options>Escribe las opciones.</options>                
+        <send>Crear encuesta</send>   
+        <votes>votos</votes>   
+        <treat>Tratamiento de encuestas</treat> 
+        <state>Cambiar encuesta activa</state>  
+        <modify>Modificar</modify>
+        <delete>Eliminar</delete>   
+        <select_one_option>Selecciona una opción</select_one_option>   
+        <launch_treat>Lanzar proceso</launch_treat>                                  
+        <new_poll>Crear nueva encuesta</new_poll>                
+        <polls_list>Lista de encuestas</polls_list>
+                                        
+    </translation>		
 </module>
