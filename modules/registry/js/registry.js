@@ -168,7 +168,6 @@ function registry() {
         $.post("index.php", {token: 0, ajax: "registry", data: JSON.stringify(content)}, function(result) {
             result = $.trim(result);
             result = $.parseJSON(result);
-            console.log(result);
             response(result);
         });
     } else {
@@ -185,7 +184,7 @@ function response(result) {
     });
     if (size === 5) {
         window.history.back();
-        alert(result['email'].toString());
+        alert(result['email'][0]);
     } else {
         $.each(id, function(key) {
             drawRed(key);
