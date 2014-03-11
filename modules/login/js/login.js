@@ -1,4 +1,4 @@
-window.onload = function() {
+$('document').ready(function() {
     $('#btnlogin').click(function(e) {
         $('#email_login').val("");
         $('#pass_login').val("");
@@ -9,7 +9,6 @@ window.onload = function() {
                 $('#login').find('input:first').focus();
             }
         });
-        //e.preventDefault();
     });
 
     $('#ximg').click(function() {
@@ -31,7 +30,9 @@ window.onload = function() {
 
     $('#remeber').click(rememberpass);
 
-};
+    $('#register').click(registry);
+
+});
 
 function login() {
     var email = $('#email_login').val();
@@ -190,4 +191,29 @@ function resetOk(result) {
      duration: 1000
      }
      });*/
+}
+
+function registry() {
+    var currenturl = document.URL;
+    currenturl = currenturl.split("#")[0];
+    var allurl = "";
+    if (/\?/.test(currenturl)) {
+        var url = currenturl.split("?")[0];
+        var par = currenturl.split("?")[1];
+        if (/lang/.test(par)) {
+            var params = par.split("&");
+            for (var i = 0; i < params.length; i++) {
+                var hash = params[i].split("=");
+                if (hash[0] === "lang") {
+                    var lang = hash[1];
+                    allurl = url + "?page=registry&lang=" + lang;
+                }
+            }
+        } else {
+            allurl = url + "?page=registry";
+        }
+    } else {
+        allurl = currenturl + "?page=registry";
+    }
+    document.location.href = allurl;
 }
