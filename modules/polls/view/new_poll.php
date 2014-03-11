@@ -2,14 +2,11 @@
 if (isset($GLOBALS['CLEANED_POST']["title"]) && $GLOBALS['CLEANED_POST']["options"]) { 
     include_once("modules/polls/model/polls_BLL.php");
     $polls_inst=polls_BLL::getInstance();
-    $polls_inst->insert_new_poll($GLOBALS['CLEANED_POST']["title"],$GLOBALS['CLEANED_POST']["options"]);
-    //print_r($insert_and_reload['title']);
-    
-    
-    
+    $polls_inst->insert_new_poll($GLOBALS['CLEANED_POST']["title"],$GLOBALS['CLEANED_POST']["options"]);  
 
 } else {
     $new_poll_fields = array(
+        'module_title' => $cont->new_poll,
         'title_txt' => $cont->title,
         'title_ipt' => '<input type="text" id="title_ipt">',
         'options_txt' => $cont->options,

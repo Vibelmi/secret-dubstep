@@ -48,21 +48,97 @@ class polls_DAO {
         $query->setTable('polls');
         $query->addColumn('*');
         $query->setWhere("");
-        $query->setOrderBy("poll_id DESC");        
-        $polls_titles = $this->bd->run($query->buildQuery());
+        $query->setOrderBy("poll_id DESC");
+        $polls = $this->bd->run($query->buildQuery());
 
-        return $polls_titles;
+
+        return $polls;
     }
+
     /////
     function select_options_from_polls() {
         $query = new SqlQueryBuilder("select");
         $query->setTable('polls_options');
         $query->addColumn('*');
         $query->setWhere("");
-        $polls_titles = $this->bd->run($query->buildQuery());
+        $options = $this->bd->run($query->buildQuery());
 
-        return $polls_titles;
-    }    
+        return $options;
+    }
+
+    function poll_active($polls) {
+        $id_poll_active;
+        while ($poll = $polls->fetch_assoc()) {
+            if ($poll['active']) {
+                $id_poll_active = $poll;
+            }
+        }
+        return $id_poll_active;
+    }
+
+    function count_votes($option_id) {
+        $query = new SqlQueryBuilder("query");
+        $query->setQuery("SELECT * ,COUNT(*) AS 'count' FROM polls_answers WHERE option_id= " . $option_id);
+        $votes = $this->bd->run($query->buildQuery());
+        $votes = $votes->fetch_assoc();
+        return $votes;
+    }
+
+    function insert_vote($option_id, $poll_id) {
+        $ip = get_client_ip();
+        $query = new SqlQueryBuilder("insert");
+        $query->setTable('polls_answers');
+        $query->addColumn('ip');
+        $query->addValue($ip);
+        $query->addColumn('option_id');
+        $query->addValue($option_id);
+        $query->addColumn('poll_id');
+        $query->addValue($poll_id);
+
+        $this->bd->run($query->buildQuery());
+    }
+
+    function deactivate_all_polls() {
+        $query = new SqlQueryBuilder("update");
+        $query->setTable('polls');
+        $query->addColumn("active");
+        $query->addValue('0');
+        $query->setWhere("");
+        $this->bd->run($query->buildQuery());
+    }
+
+    function activate_poll($poll_id) {
+        $query = new SqlQueryBuilder("update");
+        $query->setTable('polls');
+        $query->addColumn("active");
+        $query->addValue('1');
+        $query->setWhere("poll_id = " . $poll_id);
+        $this->bd->run($query->buildQuery());
+    }
+
+    function delete_poll($poll_id) {
+        $query = new SqlQueryBuilder("delete");
+        $query->setTable('polls');
+        $query->addColumn('*');
+        $query->setWhere("poll_id =" . $poll_id);
+        $this->bd->run($query->buildQuery());
+    }
+
+    function delete_all_option_from_poll($poll_id) {
+        $query = new SqlQueryBuilder("delete");
+        $query->setTable('polls_options');
+        $query->addColumn('*');
+        $query->setWhere("poll_id =" . $poll_id);
+        $this->bd->run($query->buildQuery());
+    }
+
+    function delete_all_answers_from_poll($poll_id) {
+        $query = new SqlQueryBuilder("delete");
+        $query->setTable('polls_answers');
+        $query->addColumn('*');
+        $query->setWhere("poll_id =" . $poll_id);
+        $this->bd->run($query->buildQuery());
+    }
 
 }
 
