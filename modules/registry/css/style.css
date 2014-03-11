@@ -1,0 +1,43 @@
+.registryh2 {
+    text-align: center;
+}
+
+.registrymain{
+    padding-left: 10%;
+}
+
+.registrydiv {
+    margin: .4em 0;
+}
+
+.registrylabel {
+    width: 25%;
+    float: left;
+}
+
+.registrybtn{
+    margin-left: 40%;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 15px;
+    border: 3px solid #000000;
+    box-shadow:
+        0px -1px 3px rgba(000,000,000,0.5),
+        inset 0px 0px 1px rgba(255,255,255,0.6);
+}
+
+.registrybtn:hover{
+    color: #08C;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.registryinput {
+    width: 50%;
+}
+
+#errors {
+    color: red;
+    font-weight: bold;
+    display: none;
+}

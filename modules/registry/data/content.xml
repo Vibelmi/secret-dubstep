@@ -1,0 +1,30 @@
+<module>
+	<translation language="en">
+            <registry>Registry</registry>
+            <name>Name</name>
+            <surname>Surname</surname>
+            <fiscalid>Fiscal ID</fiscalid>
+            <email>Email</email>
+            <pass>Password</pass>
+            <pass2>Retype the password</pass2>
+            <btnregistry>Register</btnregistry>
+            <optional>This isn't required field, if you think in buy fill it.</optional>
+            <errors>Complete all required fields</errors>
+            <emailuse>This email is already in use</emailuse>
+            <registryok>Check your email and follow the attached link</registryok>
+	</translation>
+	<translation language="es">
+            <registry>Registro</registry>
+            <name>Nombre</name>
+            <surname>Apellidos</surname>
+            <fiscalid>Id Fiscal</fiscalid>
+            <email>Correo</email>
+            <pass>Contraseña</pass>
+            <pass2>Rescribe la contraseña</pass2>
+            <btnregistry>Registrate</btnregistry>
+            <optional>Este campo no es requerido, si tu piensas comprar rellenalo.</optional>
+            <errors>Completa todos los campos requeridos</errors>
+            <emailuse>Este correo ya esta en uso</emailuse>
+            <registryok>Revisa tu correo y sigue el enlace adjunto</registryok>
+	</translation>
+</module>
