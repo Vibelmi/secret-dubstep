@@ -13,7 +13,6 @@ class login extends module {
 
     public function printContent() {
         ob_start();
-        //$cont=$this->content;
         include("modules/login/controller/index.php");
         $returned = ob_get_contents();
         ob_end_clean();
@@ -21,8 +20,5 @@ class login extends module {
     }
 
 }
-
-//$_SESSION = array();
-//session_destroy();
 
 ?>
