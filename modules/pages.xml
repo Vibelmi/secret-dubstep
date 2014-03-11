@@ -12,7 +12,7 @@
         <module>login</module>
         <module>create_tickets</module>
     </page>
-        <page name="ltickets">
+    <page name="ltickets">
         <module>login</module>
         <module>list_tickets</module>
     </page>
@@ -23,5 +23,9 @@
     <page name="admin_polls">
         <module>polls</module>
         <!--<module>create_poll</module>-->
+    </page>
+    <page name="add_Product">
+        <module>login</module>
+        <module>addProduct</module>
     </page>
 </pages>
