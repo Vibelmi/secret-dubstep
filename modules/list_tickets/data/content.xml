@@ -1,0 +1,14 @@
+<module>
+    <translation language="en">
+        <title>Check your ticket</title>
+        <password>Password</password>
+        <send>Send</send>
+        <yourtickets>Your created tickets</yourtickets>
+    </translation>
+    <translation language="es">
+        <title>Ver tu ticket</title>
+        <password>Contraseña</password>
+        <send>Enviar</send>
+        <yourtickets>Tus tickets creados</yourtickets>
+    </translation>
+</module>
