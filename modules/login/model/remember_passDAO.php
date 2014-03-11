@@ -10,7 +10,7 @@ class rememberDAO {
     private $cont;
 
     function __construct($cont_) {
-        $this->cont=$cont_;
+        $this->cont = $cont_;
         include("modules/login/model/loginBLL.php");
         $this->bll = loginBll::getInstance();
         $this->email = $GLOBALS['CLEANED_POST']["email"];
@@ -51,15 +51,29 @@ class rememberDAO {
         if ($this->error === 2) {
             $this->changePass();
         }
-       echo $this->error;
+        echo $this->error;
     }
 
     function changePass() {
-        $pass_ = ""; // generate password
-        //$this->bll->update_password($this->idu, $pass_);
+        $pass_ = $this->randomPassword(); // generate password
+        $this->bll->update_password($this->idu, $pass_);
         //send password
-        //include 'modules/login/controller/index.php';
         $this->error = $this->cont->changepass;
+    }
+
+    function randomPassword() {
+        $password = substr(md5(microtime()), 1, 5);
+        $alphabet1 = "ABCDEFGHIJKLMNOPQRSTUWXYZ";
+        $alphabet2 = "!#$%?";
+        $alphaLength1 = strlen($alphabet1) - 1;
+        $alphaLength2 = strlen($alphabet2) - 1;
+        for ($i = 0; $i < 3; $i++) {
+            $n1 = rand(0, $alphaLength1);
+            $password .= $alphabet1[$n1];
+            $n2 = rand(0, $alphaLength2);
+            $password .= $alphabet2[$n2];
+        }
+        return $password;
     }
 
 }
