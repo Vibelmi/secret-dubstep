@@ -1,0 +1,28 @@
+<?php
+/*
+* This is the main class for the modules.
+*/
+class contentDAO{
+	protected $filePath;
+
+	function __construct($fPath = "") {
+		$this->$filePath = $fPath;
+	}
+	
+	protected function getContent(){
+		$xml = new xmlRead("modules/module/data/content.xml");
+		return $xml->getXml();
+	}
+	
+	protected function getContentByLang($lang){
+		$xml = new xmlRead("modules/module/data/content.xml");
+		$content = $xml->getXml();
+		foreach($content->module->translation as $trans){
+			if($trans["language"] == $lang){
+				return $trans;
+			}
+		}
+		return false;
+	}
+}
+?>

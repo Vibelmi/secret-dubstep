@@ -6,7 +6,7 @@
 <header>
 <div id="logo"><img src="resources/img/logo.png"></div><div id="header">{$Content.header}</div>
 <div class="clear"></div>
-<div id="locationBar"><span>Home >> Products >> IPhone Reshulon</span><span id="langSelect">es | en | ru</span></div>
+<div id="locationBar"><span>Home</span><span id="langSelect">es | en | ru</span></div>
 </header>
 <section class="contentTop">{$Content.contentTop}</section>
 <section class="contentCenter">{$Content.contentCenter}</section>

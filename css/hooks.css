@@ -9,6 +9,13 @@ body{
 .clear{
 	clear:both;
 }
+#header{
+	width:80%;
+	height:150px;
+	display:inline-block;
+        overflow:auto;
+}
+
 .contentTop, .contentCenter, .contentBottom, .bottomLeft, .bottomCenter, .bottomRight{
     	background:#FFF;
         -webkit-border-radius: 10px;

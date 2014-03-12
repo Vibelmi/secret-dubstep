@@ -1,0 +1,19 @@
+#mainMenu{
+    width:80%;
+    position:relative;
+    top:70%;
+    left:20%;
+    height:35px;
+}
+#mainMenu a{
+    box-sizing: border-box;
+    display:inline-block;
+    padding:5px;
+    color:#AAA;
+    margin:0px 1%;
+}
+#mainMenu a:hover{
+    color:#666;
+    border-bottom:solid 1px #666;
+}
+
