@@ -18,9 +18,9 @@ else {
     $list_polls = $polls_inst->list_polls();
 
     ?>
-
-    <div id="treat_polls"><h2><?php echo $cont->treat ?></h2></div>
-    <div id="treat_polls_content">
+<div class="mod">
+<div id="treat_polls" class="module_div_title"><h2><?php echo $cont->treat ?></h2></div>
+<div id="treat_polls_content" class="module_div_content">
         <h3><?php echo $cont->select_one_option ?></h3>
         <input type="radio" name="to_do" value="state"><span><?php echo $cont->state ?></span><br>
         <input type="radio" name="to_do" value="modify"><span><?php echo $cont->modify ?></span><br>
@@ -44,4 +44,5 @@ else {
     <?php
 }
 ?>
+</div>
 <script src="modules/polls/js/treat_polls_events.js"></script>

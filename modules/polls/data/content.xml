@@ -12,6 +12,7 @@
         <launch_treat>Launch process</launch_treat>
         <new_poll>Create new poll</new_poll>
         <polls_list>Polls list</polls_list>
+        <each_line>Each line count as option</each_line>
     </translation>
     <translation language="es">
         <title>Título para la nueva encuesta</title>
@@ -26,6 +27,8 @@
         <launch_treat>Lanzar proceso</launch_treat>                                  
         <new_poll>Crear nueva encuesta</new_poll>                
         <polls_list>Lista de encuestas</polls_list>
+        <each_line>Cada linea cuenta como una opción</each_line>
+        
                                         
     </translation>		
 </module>

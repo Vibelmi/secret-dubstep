@@ -8,9 +8,9 @@ if (isset($GLOBALS['CLEANED_POST']["title"]) && $GLOBALS['CLEANED_POST']["option
     $new_poll_fields = array(
         'module_title' => $cont->new_poll,
         'title_txt' => $cont->title,
-        'title_ipt' => '<input type="text" id="title_ipt">',
+        'title_ipt' => '<input type="text" placeholder="Write a title for the new poll" id="title_ipt">',
         'options_txt' => $cont->options,
-        'options_ta' => '<textarea rows="6" style="width:100%" id="options_ta"></textarea>',
+        'options_ta' => '<textarea rows="6" placeholder="Each line count as one option" id="options_ta"></textarea>',
         'button' => '<button id="button">' . $cont->send . '</button>'
     );
     $GLOBALS['smarty']->assign('new_poll', $new_poll_fields);
