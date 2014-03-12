@@ -11,7 +11,9 @@ class registryBll {
 
     function __construct() {
         $this->bd = Db::getInstance();
-        $this->type = $GLOBALS['CLEANED_POST']["token"];
+        if(isset($GLOBALS['CLEANED_POST']["token"])){
+            $this->type = $GLOBALS['CLEANED_POST']["token"];
+        }
         $this->settype();
     }
 
@@ -58,6 +60,36 @@ class registryBll {
         return $resp1;
     }
 
+    function select_users_id($id_) {
+        $query = new SqlQueryBuilder("select");
+        $query->setTable('users');
+
+        $query->addColumn('idu');
+        $query->addColumn('email');
+        $query->addColumn('name');
+
+        $query->setWhere("idu = " . "'" . $id_ . "'");
+        $query->setLimit(1);
+
+        $resp = $this->bd->run($query->buildQuery())->fetch_assoc();
+
+        return $resp;
+    }
+
+    function select_test_numbers($id_, $number_) {
+        $query = new SqlQueryBuilder("select");
+        $query->setTable('test_numbers');
+
+        $query->addColumn($id_);
+
+        $query->setWhere("number = " . "'" . $number_ . "'");
+        $query->setLimit(1);
+
+        $resp = $this->bd->run($query->buildQuery())->fetch_assoc();
+
+        return $resp;
+    }
+
     function insert_passwords($idu_, $pass_) {
         $query = new SqlQueryBuilder("insert");
         $query->setTable($this->table_passwords);
@@ -96,11 +128,12 @@ class registryBll {
 
         $this->bd->run($query->buildQuery());
     }
-
-    function delete_attemps($idu_) { //Query to delete attemps
+    
+    function delete_test_numbers($id_) {
         $query = new SqlQueryBuilder("delete");
-        $query->setTable($this->table_login_attempts);
-        $query->setWhere($this->id . " = " . "'" . $idu_ . "'");
+        $query->setTable('test_numbers');
+
+        $query->setWhere("id = " . "'" . $id_ . "'");
 
         $this->bd->run($query->buildQuery());
     }
