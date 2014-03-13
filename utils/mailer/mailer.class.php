@@ -190,23 +190,19 @@ class mailer{
             $this->sendSingleMail("Your ticket has been sended!", $contentMail, $mail);
         }
         /*
-	* This function is for: Sending a confirmation message when a new tickets is sended.
-	* $receiverType -> The type of the receiver. Can be "USER", "PROVIDER" or "GUEST".
-	* $receiverId -> The Id of the receiver
-	* $productId -> The Id of the new ticket.
-	* 
-	* IMPORTANT: You must send the mail AFTER the new ticked has been added.
+	* This function is for: Sending a new password when a user has forgot his one
+	* $receiverType -> The type of the receiver. Can be "USER" or "PROVIDER".
+	* $userId -> The Id of the receiver
+	* $newPassword -> The new password
 	*/
         public function mailRememberPassword($receiverType,$userId,$newPassword){
-            $mail = $this->getMailDirection($receiverType,$receiverId);
+            $mail = $this->getMailDirection($receiverType,$userId);
             if($receiverType == "USER"){
-                $contentMail = $this->loadMailView("mailUserRememberPass", $newPassword);
-                $this->sendSingleMail("", $contentMail, $mail);
+                $contentMail = $this->loadMailView("mailRememberPassUser", $newPassword);
+                $this->sendSingleMail("Your new password", $contentMail, $mail);
             }else{
-                $contentMail = $this->loadMailView("mailProviderRememberPass", $newPassword);
-                $this->sendSingleMail("Your ticket has been sended!", $contentMail, $mail);
+                $contentMail = $this->loadMailView("mailRememberPassProvider", $newPassword);
+                $this->sendSingleMail("Your new password", $contentMail, $mail);
             }
-            
- 
         }
 }

@@ -36,4 +36,4 @@ body{
 </style>
 </head>
 <body>;
-<div style="width:100%;border-bottom:solid 2px #08C;"><a href="http://{$globals.HOST}{$globals.home[0]}"><img style="	width:30%;display:block;margin:auto;" id="logo" src="http://{$globals.HOST}{$globals.home[0]}resources/img/logo.png"></a></div>
+<div style="width:100%;border-bottom:solid 2px #08C;"><a href="http://{$globals.HOST}{$globals.SUBFOLDER}"><img style="	width:30%;display:block;margin:auto;" id="logo" src="http://{$globals.HOST}{$globals.SUBFOLDER}resources/img/logo.png"></a></div>

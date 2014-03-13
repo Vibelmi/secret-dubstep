@@ -6,7 +6,9 @@
   //The current url
   $URL = $_SERVER['REQUEST_URI'];
   $HOST = $_SERVER['HTTP_HOST'];
-  $home=explode("?",$URL); 
+  $home=explode("?",$URL);
+  $SUBFOLDER = explode("index",$URL);
+  $SUBFOLDER = $SUBFOLDER[0];
   /*<?php echo $GLOBALS['home'][0]; ?>*/
   
   session_start();
