@@ -205,4 +205,27 @@ class mailer{
                 $this->sendSingleMail("Your new password", $contentMail, $mail);
             }
         }
+       /*
+	* This function is for: Sending a new password when a user has forgot his one
+	* $receiverType -> The type of the receiver. Can be "USER" or "PROVIDER".
+	* $userId -> The Id of the receiver
+	* $newPassword -> The new password
+	*/
+        public function mailValidateAccount($userId,$validationNumber = 0){
+            if($validationNumber != 0){
+                $mail = $this->getMailDirection("USER",$userId);
+                $content = array("id" => $userId,
+                                    "number" => $validationNumber);
+                $contentMail = $this->loadMailView("mailValidateAccountUser", $content);
+                $this->sendSingleMail("Your new password", $contentMail, $mail);
+            }else{
+                /*
+                $mail = $this->getMailDirection("PROVIDER",$userId);
+                $content = array("id" => $userId,
+                                    "number" => $validationNumber);
+                $contentMail = $this->loadMailView("mailValidateAccount", $content);
+                $this->sendSingleMail("Your new password", $contentMail, $mail);
+                 */
+            }
+        }
 }
