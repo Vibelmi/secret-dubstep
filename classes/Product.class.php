@@ -1,12 +1,6 @@
 <?php
 
 include_once("models/Product_BLL.php");
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of Product
  *
@@ -16,20 +10,21 @@ class Product {
 
     private $_id;
     private $_name;
-    private $_description;
+    private $_description_path;
+    private $_descriptions;
     private $_image_path;
     private $_slider_path;
     private $_finish_date;
     private $_thresholds;
+    private $_show_errors;
 
-    public function __construct($id) {
-        $this->_id = $id;
-        $this->_get_DB_data($id);
-        /* $this->_name = $name;
-          $this->_description = $description;
-          $this->_image_path = $image_path;
-          $this->_slider_path = $slider_path;
-          $this->_finish_date = $finish_date; */
+    public function __construct($id = NULL) {
+        $args = func_num_args();
+        if ($args === 0){
+            $this->_id = $this->_get_next_ID_DB();
+        }else{
+            $this->_id = $id;
+        }
     }
 
     public function __get($property) {
@@ -46,19 +41,62 @@ class Product {
     }
 
     public function _get_DB_data($id) {
-        $data = get_DB_data_BLL($id);
+        $product_BLL = new Product_BLL();
+        $data = $product_BLL->get_DB_data_BLL($id);
         $this->_name = $data["_name"];
-        $this->_description = $data["_description"];
+        $this->_description_path = $data["_description"];
         $this->_image_path = $data["_image_path"];
         $this->_slider_path = $data["_slider_path"];
         $this->_finish_date = $data["_finish_date"];
-        $this->_thresholds = $data["_thresholds"];
+    }
+
+    public function _get_Product_Thresholds($id) {
+        $product_BLL = new Product_BLL();
+        $this->_thresholds = $product_BLL->get_Product_Thresholds_BLL($id);
+    }
+
+    public function _charge_descriptions() {
+        $xml = new xmlRead($this->_description_path);
+        $var = $xml->getXml();
+        foreach ($var->description as $desc) {
+            $field["language"] = (string) ($desc["language"]);
+            $field["short"] = (string) ($desc->short);
+            $field["spec"] = (string) ($desc->spec);
+            $this->_descriptions[] = $field;
+        }
+    }
+
+    public function _select_description_by_lang($lang) {
+        foreach ($this->_descriptions as $desc) {
+            if ($desc["language"] === $lang) {
+                return Array("spec" => $desc["spec"], "short" => $desc["short"]);
+            }
+        }
+    }
+
+    public function _view_Content() {
         echo "<pre>";
         print_r($this);
         echo "</pre>";
     }
+
+    public function _add_new_Product(){
+        $product_BLL = new Product_BLL($this);
+    }
+
+    public function _modify_Product(){}
     
-    public function _add_to_DB(){}
-    public function _modify_in_DB(){}
+    public function _get_next_ID_DB(){
+        $product_BLL = new Product_BLL();
+        return $product_BLL->get_next_ID_BLL();      
+    }
+
+    private function error($message) {
+        if ($this->_show_errors) {
+            print "<p>Product Class Error</p>";
+            print "<p>$message</p>";
+        }
+        return false;
+    }
 
 }

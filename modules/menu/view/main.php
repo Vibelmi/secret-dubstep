@@ -1,10 +1,9 @@
 <nav id="mainMenu">
 <?php
-$_SESION["token"] = 10;
 global $language;
 global $home;
-if(isset($_SESION["token"])){
-    switch($_SESION["token"]){
+if(isset($_SESSION["token"])){
+    switch($_SESSION["token"]){
         case 0:
             echo '  <a href="'.$home[0].'?lang='.$language.'">Home</a>
                     <a href="'.$home[0].'?lang='.$language.'&page=ctickets">Send ticket</a>

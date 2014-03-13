@@ -1,0 +1,36 @@
+<module>
+    <translation language="en">
+        <title>Add New Product</title>
+        <general_data>General Data</general_data>
+        <product_name>Product Name</product_name>
+        <thresholds>Thresholds</thresholds>
+        <units>Units</units>
+        <price>Price (€)</price>
+        <short>Short description</short>
+        <specs>Specifications</specs>
+        <short_PH>Write here a short description of the product</short_PH>
+        <specs_PH>Add here the product specifications</specs_PH>
+        <finish_date>Finish Date</finish_date>
+        <main_image>Main Image</main_image>
+        <slider_images>Slider Images</slider_images>
+	<images>Images</images>
+	<send_button>ADD PRODUCT</send_button>
+    </translation>
+    <translation language="es">
+        <title>Añadir Nuevo Producto</title>
+        <general_data>Datos Generales</general_data>
+        <product_name>Nombre del Producto</product_name>
+        <thresholds>Umbrales</thresholds>
+        <units>Unidades</units>
+        <price>Precio (€)</price>
+        <short>Descripción breve</short>
+        <specs>Especificaciones</specs>
+        <short_PH>Escriba aquí una breve descripción del producto</short_PH>
+        <specs_PH>Añada aquí las especificaciones del producto</specs_PH>
+        <finish_date>Fecha de cierre</finish_date>
+        <main_image>Imagen Principal</main_image>
+        <slider_images>Imágenes del Slider</slider_images>
+	<images>Imágenes</images>
+	<send_button>AÑADIR PRODUCTO</send_button> 
+    </translation>
+</module>
