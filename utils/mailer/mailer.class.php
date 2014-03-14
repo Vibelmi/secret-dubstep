@@ -207,9 +207,10 @@ class mailer{
         }
        /*
 	* This function is for: Sending a new password when a user has forgot his one
-	* $receiverType -> The type of the receiver. Can be "USER" or "PROVIDER".
 	* $userId -> The Id of the receiver
-	* $newPassword -> The new password
+	* $validationNumber -> The validation number, By default the number is 0.
+        *                       If the validation number is 0 (if not number is gived)
+        *                       the new registered user is a provider.
 	*/
         public function mailValidateAccount($userId,$validationNumber = 0){
             if($validationNumber != 0){
