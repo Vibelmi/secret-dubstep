@@ -17,6 +17,6 @@
 <section class="contentCenter">{$Content.contentCenter}</section>
 <section class="contentBottom">{$Content.contentBottom}</section>
 <aside class="bottomLeft">{$Content.bottomLeft}</aside>
-<aside class="bottomCenter">{$Content.bottomLeft}</aside>
+<aside class="bottomCenter">{$Content.bottomCenter}</aside>
 <aside class="bottomRight">{$Content.bottomRight}</aside>
 <div class="clear"></div>
