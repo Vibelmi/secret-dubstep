@@ -14,7 +14,7 @@
         <br>
         <input name="subject" id="subject" type="text" placeholder="<?php echo $cont->subject; ?>">
         <br>
-        <textarea name="description" id="description" rows="4" cols="50" placeholder="<?php echo $cont->description; ?>"></textarea>
+        <textarea name="description" id="description" placeholder="<?php echo $cont->description; ?>"></textarea>
         <br>
         <input id="send" type="button" value="<?php echo $cont->send; ?>">
     </form>

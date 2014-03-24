@@ -24,4 +24,20 @@ $(document).ready(function() {
             $("#temail").effect("shake");
         }
     });
+
+    $("#sendr").click(function() {
+        $("#description").css("border-color", "none");
+        description = $("#description").val();
+        if (description !== "") {
+            //SOLUCIONAR EL ENVIAR 2 TICKETS SEGUIDOS
+            $.post(document.URL, {ajax: "create_tickets", description: description}, function(result) {
+                $("#guesttickets").html(result);
+            });
+            $("#description").val();
+        } else {
+            $("#description").css("border-color", "red");
+            $("#description").effect("shake");
+        }
+    });
+
 });
