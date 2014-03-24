@@ -57,7 +57,14 @@ class rememberDAO {
     function changePass() {
         $pass_ = $this->randomPassword(); // generate password
         $this->bll->update_password($this->idu, $this->encryptPassword($pass_));
-        //send password
+        switch ($this->bll->getType()) {
+            case "0":
+                $GLOBALS['mailer']->mailRememberPassword("USER", $this->idu, $pass_);
+                break;
+            case "1":
+                $GLOBALS['mailer']->mailRememberPassword("PROVIDER", $this->idu, $pass_);
+                break;
+        };
         $this->error = $this->cont->changepass;
     }
 
@@ -75,7 +82,7 @@ class rememberDAO {
         }
         return $password;
     }
-    
+
     function encryptPassword($pass) {
         $key = '-32AX25am-';
 

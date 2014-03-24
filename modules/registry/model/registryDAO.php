@@ -119,7 +119,7 @@ class registryDAO {
             if ($this->bll->getType() === "0") { //send user email
                 $number = substr(md5(microtime()), 1, 10);
                 $this->bll->insert_test_number($this->idu, $number);
-                //send email
+                $GLOBALS['mailer']->mailValidateAccount($this->idu,$number);
             } else { //send provider email
                 //email to confirm the admin all data
             }
