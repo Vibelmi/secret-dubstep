@@ -4,7 +4,7 @@
 </head>
 <body>
 <header>
-    <div id="headerLeft"><img src="resources/img/logo.png"><em>GREEDY MONKEY</em></div>
+    <div id="headerLeft"><img src="resources/img/logoBlanc.png"><em>GREEDY MONKEY</em></div>
 <div id="headerCenter">
     {$Content.headerCenter}
 </div>
