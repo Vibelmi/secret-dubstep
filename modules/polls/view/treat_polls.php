@@ -23,7 +23,7 @@ else {
 <div id="treat_polls_content" class="module_div_content">
         <h3><?php echo $cont->select_one_option ?></h3>
         <input type="radio" name="to_do" value="state"><span><?php echo $cont->state ?></span><br>
-        <input type="radio" name="to_do" value="modify"><span><?php echo $cont->modify ?></span><br>
+       <!-- <input type="radio" name="to_do" value="modify"><span><?php echo $cont->modify ?></span><br>-->
         <input type="radio" name="to_do" value="delete"><span><?php echo $cont->delete ?></span><br>
 
         <p></p>

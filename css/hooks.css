@@ -28,6 +28,7 @@ footer{
 	margin: 5px auto;
 	display:block;
 	box-sizing:border-box;
+        -moz-box-sizing:border-box;
 }
 #headerLeft, #headerRight{
 	width:100%;
@@ -43,9 +44,6 @@ footer{
 }
 
 
-.contentTop img, .contentCenter img{
-	width:100%;
-}
 .contentTop, .contentCenter, .contentBottom, .bottomLeft, .bottomCenter, .bottomRight{
 	width:100%;
 }
