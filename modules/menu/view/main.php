@@ -8,14 +8,12 @@ if(isset($_SESSION["token"])){
 			if($language == "es"){
             echo '<ul>
                                     <li class="current"><a href="'.$home[0].'?lang='.$language.'">Inicio</a></li>
-                                    <li><a href="'.$home[0].'?lang='.$language.'&page=ctickets">Enviar ticket</a></li>
-                                    <li><a href="'.$home[0].'?lang='.$language.'&page=ltickets">Listar tickets</a></li>
+                                    <li><a href="'.$home[0].'?lang='.$language.'&page=ltickets">Tickets</a></li>
                   </ul>';
 			}else{
             echo '<ul>
                                     <li class="current"><a href="'.$home[0].'?lang='.$language.'">Home</a></li>
-                                    <li><a href="'.$home[0].'?lang='.$language.'&page=ctickets">Send ticket</a></li>
-                                    <li><a href="'.$home[0].'?lang='.$language.'&page=ltickets">List tickets</a></li>
+                                    <li><a href="'.$home[0].'?lang='.$language.'&page=ltickets">Tickets</a></li>
                   </ul>';				
 			}
             break;
@@ -23,14 +21,12 @@ if(isset($_SESSION["token"])){
 			if($language == "es"){
             echo '<ul>
                                     <li class="current"><a href="'.$home[0].'?lang='.$language.'">Inicio</a></li>
-                                    <li><a href="'.$home[0].'?lang='.$language.'&page=ctickets">Enviar ticket</a></li>
-                                    <li><a href="'.$home[0].'?lang='.$language.'&page=ltickets">Listar tickets</a></li>
+                                    <li><a href="'.$home[0].'?lang='.$language.'&page=ltickets">Tickets</a></li>
                   </ul>';
 			}else{
             echo '<ul>
                                     <li class="current"><a href="'.$home[0].'?lang='.$language.'">Home</a></li>
-                                    <li><a href="'.$home[0].'?lang='.$language.'&page=ctickets">Send ticket</a></li>
-                                    <li><a href="'.$home[0].'?lang='.$language.'&page=ltickets">List tickets</a></li>
+                                    <li><a href="'.$home[0].'?lang='.$language.'&page=ltickets">Tickets</a></li>
                   </ul>';				
 			}
             break;
@@ -39,14 +35,14 @@ if(isset($_SESSION["token"])){
             echo '<ul>
                                     <li class="current"><a href="'.$home[0].'?lang='.$language.'">Inicio</a></li>
                                     <li><a href="'.$home[0].'?lang='.$language.'&page=add_Product">Añadir producto</a></li>
-                                    <li><a href="'.$home[0].'?lang='.$language.'&page=ltickets">Listar tickets</a></li>
+                                    <li><a href="'.$home[0].'?lang='.$language.'&page=ltickets">Tickets</a></li>
                                     <li><a href="'.$home[0].'?lang='.$language.'&page=admin_polls">Encuestas</a></li>
                  </ul>';
 			}else{
             echo '<ul>
                                     <li class="current"><a href="'.$home[0].'?lang='.$language.'">Home</a></li>
                                     <li><a href="'.$home[0].'?lang='.$language.'&page=add_Product">Add product</a></li>
-                                    <li><a href="'.$home[0].'?lang='.$language.'&page=ltickets">List tickets</a></li>
+                                    <li><a href="'.$home[0].'?lang='.$language.'&page=ltickets">Tickets</a></li>
                                     <li><a href="'.$home[0].'?lang='.$language.'&page=admin_polls">Manage polls</a></li>
                  </ul>';
 			}
@@ -63,7 +59,7 @@ if(isset($_SESSION["token"])){
                 echo '<ul>
                                     <li class="current"><a href="'.$home[0].'?lang='.$language.'">Home</a></li>
                                     <li><a href="'.$home[0].'?lang='.$language.'&page=registry">Registry</a></li>
-                                    <li><a href="'.$home[0].'?lang='.$language.'&page=ctickets">Send ticket</a></li>
+                                    <li><a href="'.$home[0].'?lang='.$language.'&page=ltickets">Ticket</a></li>
                       </ul>';
 			}
 }
