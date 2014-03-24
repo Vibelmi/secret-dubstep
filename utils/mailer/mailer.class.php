@@ -218,7 +218,7 @@ class mailer{
                 $content = array("id" => $userId,
                                     "number" => $validationNumber);
                 $contentMail = $this->loadMailView("mailValidateAccountUser", $content);
-                $this->sendSingleMail("Your new password", $contentMail, $mail);
+                $this->sendSingleMail("Account Validation", $contentMail, $mail);
             }else{
                 /*
                 $mail = $this->getMailDirection("PROVIDER",$userId);
