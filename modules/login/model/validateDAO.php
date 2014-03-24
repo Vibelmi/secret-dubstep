@@ -13,7 +13,7 @@ class validateDAO {
     private $cont;
 
     function __construct($cont_) {
-        $this->cont=$cont_;
+        $this->cont = $cont_;
         include("modules/login/model/loginBLL.php");
         $this->bll = loginBll::getInstance();
         $this->email = $GLOBALS['CLEANED_POST']["email"];
@@ -115,18 +115,22 @@ class validateDAO {
             $this->error = 2;
         } else { //Check when the user was banned
             $resp1 = $this->bll->select_attempts($this->idu);
-            $time = 0;
-            for ($i = 0; $i < sizeof($resp1); $i++) {//Take the most recent time
-                if ($resp1[$i]['time'] > $time) {
-                    $time = $resp1[$i]['time'];
+            if (empty($resp1)) {
+                $this->error = $this->cont->validationemail;
+            }else{
+                $time = 0;
+                for ($i = 0; $i < sizeof($resp1); $i++) {//Take the most recent time
+                    if ($resp1[$i]['time'] > $time) {
+                        $time = $resp1[$i]['time'];
+                    }
                 }
-            }
-            if ((time() - $time) < 1800) { //Check the time that passed from the user was banned
-                $this->error = 3;
-            } else {
-                $this->error = 2;
-                $this->bll->update_status(1, $this->idu);
-                $this->bll->delete_attemps($this->idu);
+                if ((time() - $time) < 1800) { //Check the time that passed from the user was banned
+                    $this->error = 3;
+                } else {
+                    $this->error = 2;
+                    $this->bll->update_status(1, $this->idu);
+                    $this->bll->delete_attemps($this->idu);
+                }
             }
         }
     }
