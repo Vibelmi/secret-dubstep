@@ -1,6 +1,7 @@
 <?php
 
 include_once("models/Product_BLL.php");
+
 /**
  * Description of Product
  *
@@ -16,13 +17,14 @@ class Product {
     private $_slider_path;
     private $_finish_date;
     private $_thresholds;
-    private $_show_errors;
+    private $_id_prov = 0; 
+    private $_product_bll;
 
     public function __construct($id = NULL) {
         $args = func_num_args();
-        if ($args === 0){
+        if ($args === 0) {
             $this->_id = $this->_get_next_ID_DB();
-        }else{
+        } else {
             $this->_id = $id;
         }
     }
@@ -41,8 +43,8 @@ class Product {
     }
 
     public function _get_DB_data($id) {
-        $product_BLL = new Product_BLL();
-        $data = $product_BLL->get_DB_data_BLL($id);
+        $this->_product_bll = Product_BLL::getInstance();
+        $data = $this->_product_bll->get_DB_data_BLL($id);
         $this->_name = $data["_name"];
         $this->_description_path = $data["_description"];
         $this->_image_path = $data["_image_path"];
@@ -51,8 +53,8 @@ class Product {
     }
 
     public function _get_Product_Thresholds($id) {
-        $product_BLL = new Product_BLL();
-        $this->_thresholds = $product_BLL->get_Product_Thresholds_BLL($id);
+        $this->_product_bll = Product_BLL::getInstance();
+        $this->_thresholds = $this->_product_bll->get_Product_Thresholds_BLL($id);
     }
 
     public function _charge_descriptions() {
@@ -80,15 +82,21 @@ class Product {
         echo "</pre>";
     }
 
-    public function _add_new_Product(){
-        $product_BLL = new Product_BLL($this);
+    public function _add_new_Product() {
+        $this->_product_bll = Product_BLL::getInstance();
+        $this->_product_bll->add_new_Product_BLL($this);
+        $this->_product_bll->add_Product_Thresholds_BLL($this);
     }
 
-    public function _modify_Product(){}
-    
-    public function _get_next_ID_DB(){
+    public function _modify_Product() {
+        $this->_product_bll = Product_BLL::getInstance();
+        $this->_product_bll->modify_Product_BLL($this);
+        $this->_product_bll->modify_Thresholds_BLL($this);
+    }
+
+    public function _get_next_ID_DB() {
         $product_BLL = new Product_BLL();
-        return $product_BLL->get_next_ID_BLL();      
+        return $product_BLL->get_next_ID_BLL();
     }
 
     private function error($message) {

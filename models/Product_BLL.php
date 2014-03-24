@@ -10,6 +10,16 @@ include_once("models/Product_DAO.php");
 class Product_BLL {
     
     private $_db;
+    private $_product_dao;
+    private $_instance;
+    
+    public static function getInstance() {
+        if (!(self::$_instance instanceof self)) {
+            self::$_instance = new self();
+        }
+        return self::$_instance;
+    }
+    
     
     public function __construct() {
         $this->_db = Db::getInstance();
@@ -30,8 +40,8 @@ class Product_BLL {
 
     public function get_DB_data_BLL($id) {
         if ($this->_db) {
-            $product_DAO = new Product_DAO();
-            return $product_DAO->get_DB_data_DAO($id, $this->_db);
+            $this->_product_dao = Product_DAO::getInstance();
+            return $this->_product_dao->get_DB_data_DAO($id, $this->_db);
         } else {
             echo "Error _get_DB_data_BLL at DB_instance";
         }
@@ -39,8 +49,8 @@ class Product_BLL {
 
     public function get_Product_Thresholds_BLL($id) {
         if ($this->_db) {
-            $product_DAO = new Product_DAO();
-            return $product_DAO->get_Product_Thresholds_DAO($id, $this->_db);            
+            $this->_product_dao = Product_DAO::getInstance();
+            return $this->_product_dao->get_Product_Thresholds_DAO($id, $this->_db);            
         } else {
             echo "Error _get_Product_Thresholds_BLL at DB_instance";
         }
@@ -49,17 +59,39 @@ class Product_BLL {
 
     public function add_new_Product_BLL($product) {
         if ($this->_db) {
-            $product_DAO = new Product_DAO();
-            return $product_DAO->add_new_Product_DAO($product, $this->_db);            
+            $this->_product_dao = Product_DAO::getInstance();
+            return $this->_product_dao->add_new_Product_DAO($product, $this->_db);            
         } else {
             echo "Error _add_new_Product_DAO at DB_instance";
         }
     }
 
-    public function add_Product_Thresholds_BLL($id) {
+    public function add_Product_Thresholds_BLL($product) {
         if ($this->_db) {
-            $product_DAO = new Product_DAO();
-            return $product_DAO->add_Product_Thresholds_DAO($id, $this->_db);            
+            $this->_product_dao = Product_DAO::getInstance();
+            return $this->_product_dao->add_Product_Thresholds_DAO($product, $this->_db);            
+        } else {
+            echo "Error add_Product_Thresholds_DAO at DB_instance";
+        }
+    }
+    
+        public function modify_Product_BLL($product) {
+        if ($this->_db) {
+            $this->_product_dao = Product_DAO::getInstance();
+            return $this->_product_dao->modify_Product_DAO($product, $this->_db);            
+        } else {
+            echo "Error _add_new_Product_DAO at DB_instance";
+        }
+    }
+
+    public function modify_Thresholds_BLL($product) {
+        if ($this->_db) {
+            $this->_product_dao = Product_DAO::getInstance();
+            $deleted_thresholds = $this->_product_dao->delete_Thresholds_DAO($product, $this->_db);
+            if(!$deleted_thresholds){
+                return false;
+            }
+            return $this->_product_dao->add_Product_Thresholds_DAO($product, $this->_db);            
         } else {
             echo "Error add_Product_Thresholds_DAO at DB_instance";
         }
@@ -67,8 +99,8 @@ class Product_BLL {
 
     public function get_next_ID_BLL(){
         if ($this->_db) {
-            $product_DAO = new Product_DAO();
-            return $product_DAO->get_next_ID_DAO($this->_db);            
+            $this->_product_dao = Product_DAO::getInstance();
+            return $this->_product_dao->get_next_ID_DAO($this->_db);            
         } else {
             echo "Error _get_Product_Thresholds_BLL at DB_instance";
         }
