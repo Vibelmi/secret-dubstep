@@ -1,24 +1,21 @@
-<h2 class="guesttitle"><?php echo $result["subject"] ?></h2>
-<?php
-if (sizeof($responses) !== 0) {
+<div id="guesttickets">
+    <h2 class="guesttitle"><?php echo $responses[0]["subject"] ?></h2>
+    <?php
+    $gemail = $responses[0]["email"];
     for ($i = 0; $i < sizeof($responses); $i++) {
-        echo '
-<div class="guestdiv">
-        
-    <section class="guest">' . $result["description"] . '</section>
-</div>
-<div class="guestdiv">
-    <section class="admin">' . $responses[$i]["response"] . '</section>
-</div>';
+        if (isset($responses[$i]["idrg"])) {
+            echo ' <div class="admindiv">
+                    <label id="admintime">' . $responses[$i]["date"] . '</label>
+                    <br>
+                    <section class="admin">' . $responses[$i]["response"] . '</section> 
+              </div>';
+        } else {
+            echo ' <div class="guestdiv">
+                    <label id="guesttime">' . $responses[$i]["date"] . '</label>
+                    <br>
+                    <section class="guest">' . $responses[$i]["description"] . '</section>
+               </div>';
+        }
     }
-} else {
-    echo '
-<div class="guestdiv">
-        
-    <section class="guest">' . $result["description"] . '</section>
-</div>';
-}
-?>
-<textarea name="description" id="description" placeholder="<?php echo $cont->description; ?>"></textarea>
-<br>
-<input type="button" id="sendr" value="Send">
+    ?>
+</div>

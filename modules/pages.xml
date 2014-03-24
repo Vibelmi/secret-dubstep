@@ -4,15 +4,11 @@
         <module>login</module>	  
         <module>menu</module>		  	                                        	                                
     </page>
-    <page name="ctickets">
-        <module>login</module>
-        <module>menu</module>	
-        <module>create_tickets</module>
-    </page>
     <page name="ltickets">
         <module>login</module>
         <module>menu</module>	
         <module>list_tickets</module>
+        <module>create_tickets</module>
     </page>
     <page name="registry">
         <module>login</module>

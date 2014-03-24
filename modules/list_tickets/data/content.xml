@@ -4,11 +4,13 @@
         <password>Password</password>
         <send>Send</send>
         <yourtickets>Your created tickets</yourtickets>
+        <description>Write your message</description>
     </translation>
     <translation language="es">
         <title>Ver tu ticket</title>
         <password>Contraseña</password>
         <send>Enviar</send>
         <yourtickets>Tus tickets creados</yourtickets>
+        <description>Escribe tu mensaje</description>
     </translation>
 </module>
