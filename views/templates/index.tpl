@@ -4,14 +4,19 @@
 </head>
 <body>
 <header>
-<div id="logo"><img src="resources/img/logo.png"></div><div id="header">{$Content.header}</div>
+    <div id="headerLeft"><img src="resources/img/logo.png"><em>GREEDY MONKEY</em></div>
+<div id="headerCenter">
+    {$Content.headerCenter}
+</div>
+<div id="headerRight">{$Content.headerRight}</div>
 <div class="clear"></div>
-<div id="locationBar"><span>Home</span><span id="langSelect">es | en | ru</span></div>
 </header>
-<section class="contentTop">{$Content.contentTop}</section>
+<div class="fixPosition">
+<div class="content">
+<section class="contentTop"><article>{$Content.contentTop}<article></section>
 <section class="contentCenter">{$Content.contentCenter}</section>
 <section class="contentBottom">{$Content.contentBottom}</section>
 <aside class="bottomLeft">{$Content.bottomLeft}</aside>
-<aside class="bottomCenter">{$Content.bottomCenter}</aside>
+<aside class="bottomCenter">{$Content.bottomLeft}</aside>
 <aside class="bottomRight">{$Content.bottomRight}</aside>
 <div class="clear"></div>

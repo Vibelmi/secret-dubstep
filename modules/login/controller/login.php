@@ -6,7 +6,7 @@ class login extends module {
 
     function __construct($fPath = "modules/login/data/content.xml") {
         $this->contentFilePath = $fPath;
-        $this->position = "header";
+        $this->position = "headerRight";
         $this->display = true;
         $this->content = $this->getContentByLang($GLOBALS['language']);
     }

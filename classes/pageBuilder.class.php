@@ -20,7 +20,8 @@ class pageBuilder{
 	
 		$this->loadModules();
 		$this->loadModuleStyles();
-		$this->displayAreas = array("header" => "",
+		$this->displayAreas = array("headerRight" => "",
+                                                "headerCenter" => "",
 						"footer" => "",
 						"contentTop" => "",
 						"contentCenter" => "",

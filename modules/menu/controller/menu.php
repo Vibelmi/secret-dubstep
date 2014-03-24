@@ -3,7 +3,7 @@ include_once ("modules/module/controller/module.php");
 class menu extends module{
 	function __construct($fPath = "modules/menu/data/content.xml") {
 		$this->contentFilePath = $fPath;
-		$this->position = "header";
+		$this->position = "headerCenter";
 		$this->display = true;
 		$this->content = $this->getContentByLang($GLOBALS['language']);
 	}

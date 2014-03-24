@@ -2,9 +2,7 @@
     <page name="main">
         <module>slider</module>	
         <module>login</module>	  
-        <module>menu</module>	
-        <module>polls</module>	
-        <module>twitter</module>	  	                                        	                                
+        <module>menu</module>		  	                                        	                                
     </page>
     <page name="ctickets">
         <module>login</module>
