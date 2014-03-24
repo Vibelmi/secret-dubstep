@@ -163,14 +163,14 @@ function paint(error) {
             $('#pass_login').effect('shake');
             break;
         case 2: //All correct
-            document.location.href = document.URL;
+            location.reload();
             break;
         case 3: //The user is banned
             $('#login').prepend("<img id='banned' src='modules/login/images/banned.png'>");
             $('#banned').lightbox_me();
             break;
         case 4: //The user is admin
-            document.location.href = document.URL;
+            location.reload();
             break;
         case 5: //email empty || email incorrect
             $('#email_login').css("border-color", "red");
