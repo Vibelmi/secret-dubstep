@@ -34,20 +34,12 @@ footer{
 footer small{
 	color:white;
 }
-#locationBar{
-	height:30px;	
-	background:#08C;
-        border-radius: 5px;
-}
-#locationBar span{
-	color:white;
-	font-weight:bold;
-	padding:7px 10px;
-	display:inline-block;
-}
-#langSelect{
+.languages{
 	float:right;
-	display:block;
+        
+}
+.languages a{
+        color:white;
 }
 
 
