@@ -1,5 +1,7 @@
 <?php
 include_once("modules/module/controller/module.php");
+include_once("modules/list_tickets/model/functions.php");
+
 class list_tickets extends module{
 	
 	function __construct($fPath = "modules/list_tickets/data/content.xml") {

@@ -13,7 +13,7 @@ if (isset($_SESSION['email'])) {
     } elseif ($_SESSION['token'] == 10) {
         include("modules/list_tickets/view/mainadmin.php");
     }
-} elseif (isset($GLOBALS['CLEANED_GET']["idtg"], $GLOBALS['CLEANED_POST']["passwordt"])) {
+} elseif ((isset($GLOBALS['CLEANED_GET']["idtg"], $GLOBALS['CLEANED_POST']["passwordt"]))||(isset($GLOBALS['CLEANED_GET']["idtg"], $_SESSION["response_password"]))) {
     include("modules/list_tickets/model/guesttickets.php");
 } elseif (isset($GLOBALS['CLEANED_GET']["idtg"])) {
     include("modules/list_tickets/view/mainguest.php");

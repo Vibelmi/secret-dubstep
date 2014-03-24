@@ -27,3 +27,11 @@
     height: 100%;
     max-height: 20%;
 }
+
+#admintime, #guesttime{
+    font-size: 12px;
+}
+
+#admintime{
+    float: right;
+}
